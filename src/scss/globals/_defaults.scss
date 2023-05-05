@@ -29,3 +29,7 @@ h5,
 h6 {
   font-family: var(--ff-header);
 }
+*::selection {
+  color: hsl(var(--c-text-light));
+  background-color: hsl(var(--c-accent-main-high));
+}

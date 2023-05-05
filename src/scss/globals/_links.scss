@@ -5,7 +5,7 @@ a {
 
   position: relative;
   &::after {
-    @include fade;
+    @include fade(0ms, 75ms);
 
     content: "";
     position: absolute;
@@ -21,11 +21,12 @@ a {
     transform-origin: left;
   }
 
-  @include fadeHalf;
+  @include fade(250ms);
   &:hover {
     color: hsl(var(--c-text-light));
 
     &::after {
+      @include fade(250ms);
       transform: scaleX(100%);
     }
   }

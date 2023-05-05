@@ -87,6 +87,42 @@ h6 {
 :root {
   --ff-body: "Rubik", sans-serif;
   --ff-header: "Karla", sans-serif;
+  --fs-400: 1rem;
+  --fs-500: 1.25rem;
+  --fs-600: 1.5rem;
+  --fs-700: 2rem;
+}
+
+.text-h-l {
+  font-size: var(--fs-700);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.text-h-m {
+  font-size: var(--fs-600);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.text-h-s {
+  font-size: var(--fs-500);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.text-b-m {
+  font-size: var(--fs-500);
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.text-b-s {
+  font-size: var(--fs-400);
+  font-weight: 400;
+  line-height: 1.5;
 }
 
 html {
@@ -118,6 +154,16 @@ h6 {
   font-family: var(--ff-header);
 }
 
+*::-moz-selection {
+  color: hsl(var(--c-text-light));
+  background-color: hsl(var(--c-accent-main-high));
+}
+
+*::selection {
+  color: hsl(var(--c-text-light));
+  background-color: hsl(var(--c-accent-main-high));
+}
+
 .scroll-destination {
   height: var(--header-height);
 }
@@ -125,10 +171,10 @@ h6 {
 a {
   text-decoration: none;
   position: relative;
-  transition: color 125ms ease-out, background-color 125ms ease-out, transform 125ms ease-out;
+  transition: color 250ms ease-out 0ms, background-color 250ms ease-out 0ms, transform 250ms ease-out 0ms;
 }
 a::after {
-  transition: color 250ms ease-out, background-color 250ms ease-out, transform 250ms ease-out;
+  transition: color 0ms ease-out 75ms, background-color 0ms ease-out 75ms, transform 0ms ease-out 75ms;
   content: "";
   position: absolute;
   left: -0.5ch;
@@ -144,6 +190,7 @@ a:hover {
   color: hsl(var(--c-text-light));
 }
 a:hover::after {
+  transition: color 250ms ease-out 0ms, background-color 250ms ease-out 0ms, transform 250ms ease-out 0ms;
   transform: scaleX(100%);
 }
 
@@ -165,7 +212,7 @@ a:hover::after {
 }
 .header nav {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 :root {
@@ -210,4 +257,12 @@ a:hover::after {
   background: linear-gradient(135deg, hsl(var(--c-accent-main-high)), hsl(var(--c-accent-main-low)));
   background-attachment: fixed;
   background-size: 100% max(100vh, 20rem);
+}
+.header-background *::-moz-selection {
+  color: hsl(var(--c-text-light));
+  background-color: hsl(var(--c-accent-main-low));
+}
+.header-background *::selection {
+  color: hsl(var(--c-text-light));
+  background-color: hsl(var(--c-accent-main-low));
 }/*# sourceMappingURL=main.css.map */

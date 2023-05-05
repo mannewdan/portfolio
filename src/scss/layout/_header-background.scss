@@ -6,4 +6,9 @@
   );
   background-attachment: fixed;
   background-size: 100% max(100vh, 20rem);
+
+  & *::selection {
+    color: hsl(var(--c-text-light));
+    background-color: hsl(var(--c-accent-main-low));
+  }
 }
