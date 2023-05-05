@@ -7,3 +7,9 @@
     background-color $duration ease-out $delay,
     transform $duration ease-out $delay;
 }
+
+.block {
+  position: relative;
+  z-index: 2;
+  background: hsl(var(--c-bg-dark));
+}

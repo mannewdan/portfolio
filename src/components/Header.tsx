@@ -1,7 +1,10 @@
+import Background from "./Background";
+
 export default function Header() {
   return (
     <>
-      <header className="header header-background">
+      <header className="header">
+        <Background />
         <span className="text-h-s">Daniel Newman</span>
         <nav>
           <a href="#home" className="text-b-m c-text-light-50">

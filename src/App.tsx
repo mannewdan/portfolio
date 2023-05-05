@@ -6,22 +6,30 @@ export default function App() {
     <>
       <Header />
       <Hero />
-      <h1 className="text-h-l">Totam eius eos perspiciatis</h1>
-      <h2 className="text-h-m">Totam eius eos perspiciatis</h2>
-      <h3 className="text-h-s">Totam eius eos perspiciatis</h3>
-      <p className="text-b-m">
-        Nulla quis earum corrupti consectetur consectetur. Mollitia at vel
-        dolorem aliquid sapiente incidunt. Ut exercitationem ad fugit. Iusto
-        tenetur pariatur nisi architecto sint labore est voluptatem.
-      </p>
-      <p className="text-b-s" style={{ height: "200vh" }}>
-        Nulla quis earum corrupti consectetur consectetur. Mollitia at vel
-        dolorem aliquid sapiente incidunt. Ut exercitationem ad fugit. Iusto
-        tenetur pariatur nisi architecto sint labore est voluptatem.
-      </p>
-      <div id="projects" className="scroll-destination"></div>
-      <p>Scroll To Here</p>
-      <p style={{ height: "200vh" }}>paragraph</p>
+      <main>
+        <section className="block" style={{ height: "150vh" }}>
+          <h1 className="text-h-l">Totam eius eos perspiciatis</h1>
+          <h2 className="text-h-m">Totam eius eos perspiciatis</h2>
+          <h3 className="text-h-s">Totam eius eos perspiciatis</h3>
+        </section>
+        <section style={{ height: "150vh" }}>
+          <p className="text-b-m">
+            Nulla quis earum corrupti consectetur consectetur. Mollitia at vel
+            dolorem aliquid sapiente incidunt. Ut exercitationem ad fugit. Iusto
+            tenetur pariatur nisi architecto sint labore est voluptatem.
+          </p>
+          <p className="text-b-s">
+            Nulla quis earum corrupti consectetur consectetur. Mollitia at vel
+            dolorem aliquid sapiente incidunt. Ut exercitationem ad fugit. Iusto
+            tenetur pariatur nisi architecto sint labore est voluptatem.
+          </p>
+        </section>
+        <section className="block" style={{ height: "150vh" }}>
+          <div id="projects" className="scroll-destination"></div>
+          <p>Scroll To Here</p>
+          <p>paragraph</p>
+        </section>
+      </main>
     </>
   );
 }
