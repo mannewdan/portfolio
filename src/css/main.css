@@ -56,8 +56,51 @@ h6 {
 }
 
 :root {
+  --c-bg-light: 0 0% 98%;
+  --c-bg-medium: 0 0% 59%;
+  --c-bg-dark: 237 10% 16%;
+  --c-text-dark: 209 48% 24%;
+  --c-text-medium: 209 12% 34%;
+  --c-text-light: 0 0% 100%;
+  --c-accent-main-high: 12 100% 72%;
+  --c-accent-main-low: 353 100% 62%;
+  --c-accent-dark-high: 237 23% 31%;
+  --c-accent-dark-low: 237 17% 21%;
+}
+
+.c-text-light {
+  color: hsl(var(--c-text-light));
+}
+
+.c-text-medium {
+  color: hsl(var(--c-text-medium));
+}
+
+.c-text-dark {
+  color: hsl(var(--c-text-dark));
+}
+
+.c-text-light-50 {
+  color: hsl(var(--c-text-light)/50%);
+}
+
+:root {
   --ff-body: "Rubik", sans-serif;
   --ff-header: "Karla", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-color: hsl(var(--c-accent-main-high)) hsl(var(--c-accent-dark-low));
+}
+html::-webkit-scrollbar {
+  width: 10px;
+}
+html::-webkit-scrollbar-thumb {
+  background: linear-gradient(86deg, hsl(var(--c-accent-main-high)), hsl(var(--c-accent-main-low)));
+}
+html::-webkit-scrollbar-track {
+  background: hsl(var(--c-accent-dark-low));
 }
 
 body {
@@ -73,4 +116,98 @@ h4,
 h5,
 h6 {
   font-family: var(--ff-header);
+}
+
+.scroll-destination {
+  height: var(--header-height);
+}
+
+a {
+  text-decoration: none;
+  position: relative;
+  transition: color 125ms ease-out, background-color 125ms ease-out, transform 125ms ease-out;
+}
+a::after {
+  transition: color 250ms ease-out, background-color 250ms ease-out, transform 250ms ease-out;
+  content: "";
+  position: absolute;
+  left: -0.5ch;
+  top: 40%;
+  z-index: -1;
+  width: calc(100% + 1ch);
+  height: 0.75rem;
+  background-color: hsl(var(--c-text-light)/15%);
+  transform: scaleX(0%);
+  transform-origin: left;
+}
+a:hover {
+  color: hsl(var(--c-text-light));
+}
+a:hover::after {
+  transform: scaleX(100%);
+}
+
+:root {
+  --header-height: 3rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  height: var(--header-height);
+  padding-inline: 1.25rem;
+}
+.header nav {
+  display: flex;
+  gap: 1rem;
+}
+
+:root {
+  --hero-height: 15rem;
+}
+
+.hero {
+  height: calc(100vh - var(--header-height));
+  width: 100%;
+  position: relative;
+}
+.hero .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: max(50vh - var(--hero-height) * 0.5 - var(--header-height), 0px);
+  height: var(--hero-height);
+  background: linear-gradient(90deg, hsl(var(--c-accent-main-low)/0%) 5%, hsl(var(--c-accent-main-high)/35%), hsl(var(--c-accent-main-low)/0%) 95%);
+  display: none;
+}
+.hero .container::before, .hero .container::after {
+  content: "";
+  position: absolute;
+  height: 0.25rem;
+  width: 100%;
+  background: linear-gradient(90deg, hsl(var(--c-accent-main-high)/0%) 2%, hsl(var(--c-accent-main-high)/40%), hsl(var(--c-accent-main-high)/0%) 98%);
+}
+.hero .container::before {
+  top: 0;
+}
+.hero .container::after {
+  bottom: 0;
+}
+
+.header-background {
+  background: linear-gradient(135deg, hsl(var(--c-accent-main-high)), hsl(var(--c-accent-main-low)));
+  background-attachment: fixed;
+  background-size: 100% max(100vh, 20rem);
 }/*# sourceMappingURL=main.css.map */

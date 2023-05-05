@@ -1,0 +1,12 @@
+.scroll-destination {
+  height: var(--header-height);
+}
+
+@mixin fade() {
+  transition: color 250ms ease-out, background-color 250ms ease-out,
+    transform 250ms ease-out;
+}
+@mixin fadeHalf() {
+  transition: color 125ms ease-out, background-color 125ms ease-out,
+    transform 125ms ease-out;
+}

@@ -1,0 +1,56 @@
+:root {
+  --hero-height: 15rem;
+}
+
+.hero {
+  height: calc(100vh - var(--header-height));
+  width: 100%;
+
+  position: relative;
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: max(
+      calc((50vh - calc(var(--hero-height) * 0.5) - var(--header-height))),
+      0px
+    );
+
+    height: var(--hero-height);
+
+    background: linear-gradient(
+      90deg,
+      hsl(var(--c-accent-main-low) / 0%) 5%,
+      hsl(var(--c-accent-main-high) / 35%),
+      hsl(var(--c-accent-main-low) / 0%) 95%
+    );
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      height: 0.25rem;
+      width: 100%;
+      background: linear-gradient(
+        90deg,
+        hsl(var(--c-accent-main-high) / 0%) 2%,
+        hsl(var(--c-accent-main-high) / 40%),
+        hsl(var(--c-accent-main-high) / 0%) 98%
+      );
+    }
+    &::before {
+      top: 0;
+    }
+    &::after {
+      bottom: 0;
+    }
+
+    display: none;
+  }
+}

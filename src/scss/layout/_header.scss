@@ -1,0 +1,23 @@
+:root {
+  --header-height: 3rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  height: var(--header-height);
+
+  padding-inline: 1.25rem;
+
+  nav {
+    display: flex;
+    gap: 1rem;
+  }
+}

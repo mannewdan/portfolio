@@ -1,0 +1,32 @@
+@use "./utils" as *;
+
+a {
+  text-decoration: none;
+
+  position: relative;
+  &::after {
+    @include fade;
+
+    content: "";
+    position: absolute;
+    left: -0.5ch;
+    top: 40%;
+    z-index: -1;
+
+    width: calc(100% + 1ch);
+    height: 0.75rem;
+    background-color: hsl(var(--c-text-light) / 15%);
+
+    transform: scaleX(0%);
+    transform-origin: left;
+  }
+
+  @include fadeHalf;
+  &:hover {
+    color: hsl(var(--c-text-light));
+
+    &::after {
+      transform: scaleX(100%);
+    }
+  }
+}

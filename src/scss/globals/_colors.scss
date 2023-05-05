@@ -1,2 +1,27 @@
 :root {
+  --c-bg-light: 0 0% 98%;
+  --c-bg-medium: 0 0% 59%;
+  --c-bg-dark: 237 10% 16%;
+
+  --c-text-dark: 209 48% 24%;
+  --c-text-medium: 209 12% 34%;
+  --c-text-light: 0 0% 100%;
+
+  --c-accent-main-high: 12 100% 72%;
+  --c-accent-main-low: 353 100% 62%;
+  --c-accent-dark-high: 237 23% 31%;
+  --c-accent-dark-low: 237 17% 21%;
+}
+
+.c-text-light {
+  color: hsl(var(--c-text-light));
+}
+.c-text-medium {
+  color: hsl(var(--c-text-medium));
+}
+.c-text-dark {
+  color: hsl(var(--c-text-dark));
+}
+.c-text-light-50 {
+  color: hsl(var(--c-text-light) / 50%);
 }
