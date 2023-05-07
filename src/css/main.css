@@ -299,6 +299,10 @@ a:hover::after {
   background-color: hsl(var(--c-accent-main-low));
 }
 
+:root {
+  --shape-size: min(80vmax, 70rem);
+}
+
 .background-animation {
   background: linear-gradient(135deg, hsl(var(--c-accent-main-high)), hsl(var(--c-accent-main-low)));
   background-attachment: fixed;
@@ -311,34 +315,81 @@ a:hover::after {
   height: 100%;
   width: 100%;
 }
-.background-animation .shape-1 {
+.background-animation .pivot {
   position: absolute;
-  width: 250px;
-  height: 250px;
-  background-color: hsl(var(--c-accent-main-high));
+  right: 50%;
+  bottom: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation-name: pivot;
+  animation-duration: 100000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.background-animation .shape {
+  position: absolute;
+  width: var(--shape-size);
+  height: var(--shape-size);
   border-radius: 50%;
+  opacity: 50%;
+  background: linear-gradient(135deg, hsl(var(--c-accent-main-high)), hsl(var(--c-accent-main-low)));
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  animation-duration: 100000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.background-animation .shape-1 {
+  animation-name: shape-1;
 }
 .background-animation .shape-2 {
-  position: absolute;
-  left: 20%;
-  width: 250px;
-  height: 250px;
-  background-color: hsl(var(--c-accent-main-high));
-  border-radius: 50%;
+  animation-name: shape-2;
 }
 .background-animation .shape-3 {
-  position: absolute;
-  left: 40%;
-  width: 250px;
-  height: 250px;
-  background-color: hsl(var(--c-accent-main-high));
-  border-radius: 50%;
+  animation-name: shape-3;
 }
 .background-animation .shape-4 {
-  position: absolute;
-  left: 60%;
-  width: 250px;
-  height: 250px;
-  background-color: hsl(var(--c-accent-main-high));
-  border-radius: 50%;
+  animation-name: shape-4;
+}
+
+@keyframes pivot {
+  0% {
+    transform: rotate(120deg);
+  }
+  100% {
+    transform: rotate(480deg);
+  }
+}
+@keyframes shape-1 {
+  0% {
+    transform: translateX(calc(var(--shape-size) * -0.52)) rotate(-120deg);
+  }
+  100% {
+    transform: translateX(calc(var(--shape-size) * -0.52)) rotate(-480deg);
+  }
+}
+@keyframes shape-2 {
+  0% {
+    transform: translateX(calc(var(--shape-size) * 0.52)) rotate(-120deg);
+  }
+  100% {
+    transform: translateX(calc(var(--shape-size) * 0.52)) rotate(-480deg);
+  }
+}
+@keyframes shape-3 {
+  0% {
+    transform: translateY(calc(var(--shape-size) * -0.9)) rotate(-120deg);
+  }
+  100% {
+    transform: translateY(calc(var(--shape-size) * -0.9)) rotate(-480deg);
+  }
+}
+@keyframes shape-4 {
+  0% {
+    transform: translateY(calc(var(--shape-size) * 0.9)) rotate(-120deg);
+  }
+  100% {
+    transform: translateY(calc(var(--shape-size) * 0.9)) rotate(-480deg);
+  }
 }/*# sourceMappingURL=main.css.map */
