@@ -80,33 +80,44 @@ h6 {
   color: hsl(var(--c-text-dark));
 }
 
+.c-text-light-75 {
+  color: hsl(var(--c-text-light)/75%);
+}
+
 .c-text-light-50 {
   color: hsl(var(--c-text-light)/50%);
 }
 
 :root {
   --ff-body: "Rubik", sans-serif;
-  --ff-header: "Karla", sans-serif;
+  --ff-header: "Jost", sans-serif;
   --fs-400: 1rem;
   --fs-500: 1.25rem;
-  --fs-600: 1.5rem;
-  --fs-700: 2rem;
+  --fs-600: 1.75rem;
+  --fs-700: 2.25rem;
+  --fs-800: 3rem;
+  --fs-900: 4rem;
 }
 
 .text-h-l {
-  font-size: var(--fs-700);
+  font-family: var(--ff-header);
+  font-size: var(--fs-900);
   font-weight: 700;
   line-height: 1.25;
+  text-transform: uppercase;
 }
 
 .text-h-m {
-  font-size: var(--fs-600);
+  font-family: var(--ff-header);
+  font-size: var(--fs-700);
   font-weight: 700;
   line-height: 1.25;
+  text-transform: uppercase;
 }
 
 .text-h-s {
-  font-size: var(--fs-500);
+  font-family: var(--ff-header);
+  font-size: var(--fs-400);
   font-weight: 700;
   line-height: 1.25;
   letter-spacing: 2px;
@@ -114,12 +125,14 @@ h6 {
 }
 
 .text-b-m {
+  font-family: var(--ff-body);
   font-size: var(--fs-500);
   font-weight: 400;
   line-height: 1.35;
 }
 
 .text-b-s {
+  font-family: var(--ff-body);
   font-size: var(--fs-400);
   font-weight: 400;
   line-height: 1.5;
@@ -174,12 +187,12 @@ h6 {
   background: hsl(var(--c-bg-dark));
 }
 
-a {
+nav a {
   text-decoration: none;
   position: relative;
   transition: color 250ms ease-out 0ms, background-color 250ms ease-out 0ms, transform 250ms ease-out 0ms;
 }
-a::after {
+nav a::after {
   transition: color 0ms ease-out 75ms, background-color 0ms ease-out 75ms, transform 0ms ease-out 75ms;
   content: "";
   position: absolute;
@@ -192,12 +205,25 @@ a::after {
   transform: scaleX(0%);
   transform-origin: left;
 }
-a:hover {
+nav a:hover {
   color: hsl(var(--c-text-light));
 }
-a:hover::after {
+nav a:hover::after {
   transition: color 250ms ease-out 0ms, background-color 250ms ease-out 0ms, transform 250ms ease-out 0ms;
   transform: scaleX(100%);
+}
+
+.hero a {
+  color: hsl(var(--c-text-medium));
+  background: hsl(var(--c-bg-light));
+  text-decoration: none;
+  padding: 0.6rem 1rem 0.5rem 1rem;
+  border-radius: 0.25rem;
+  box-shadow: 2px 2px 8px hsla(0, 0%, 0%, 0.25);
+  transition: transform 100ms ease-out;
+}
+.hero a:hover {
+  transform: translateY(-0.1rem);
 }
 
 :root {
@@ -248,7 +274,7 @@ a:hover::after {
   position: relative;
   z-index: 2;
 }
-.hero .container {
+.hero .main-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -261,34 +287,21 @@ a:hover::after {
   margin-right: auto;
   margin-top: max(50vh - var(--hero-height) * 0.5 - var(--header-height), 0px);
   height: var(--hero-height);
-  /*
-  background: linear-gradient(
-    90deg,
-    hsl(var(--c-accent-main-low) / 0%) 5%,
-    hsl(var(--c-accent-main-high) / 35%),
-    hsl(var(--c-accent-main-low) / 0%) 95%
-  );
-  */
 }
-.hero .container::before, .hero .container::after {
+.hero .main-container::before, .hero .main-container::after {
   content: "";
   position: absolute;
   height: 0.25rem;
   width: 100%;
-  /*
-  background: linear-gradient(
-    90deg,
-    hsl(var(--c-accent-main-high) / 0%) 2%,
-    hsl(var(--c-accent-main-high) / 40%),
-    hsl(var(--c-accent-main-high) / 0%) 98%
-  );
-  */
 }
-.hero .container::before {
+.hero .main-container::before {
   top: 0;
 }
-.hero .container::after {
+.hero .main-container::after {
   bottom: 0;
+}
+.hero .main-container a {
+  margin-top: 1rem;
 }
 .hero *::-moz-selection {
   color: hsl(var(--c-text-light));
@@ -355,41 +368,41 @@ a:hover::after {
 
 @keyframes pivot {
   0% {
-    transform: rotate(120deg);
+    transform: rotate(100deg);
   }
   100% {
-    transform: rotate(480deg);
+    transform: rotate(460deg);
   }
 }
 @keyframes shape-1 {
   0% {
-    transform: translateX(calc(var(--shape-size) * -0.52)) rotate(-120deg);
+    transform: translateX(calc(var(--shape-size) * -0.52)) rotate(-100deg);
   }
   100% {
-    transform: translateX(calc(var(--shape-size) * -0.52)) rotate(-480deg);
+    transform: translateX(calc(var(--shape-size) * -0.52)) rotate(-460deg);
   }
 }
 @keyframes shape-2 {
   0% {
-    transform: translateX(calc(var(--shape-size) * 0.52)) rotate(-120deg);
+    transform: translateX(calc(var(--shape-size) * 0.52)) rotate(-100deg);
   }
   100% {
-    transform: translateX(calc(var(--shape-size) * 0.52)) rotate(-480deg);
+    transform: translateX(calc(var(--shape-size) * 0.52)) rotate(-460deg);
   }
 }
 @keyframes shape-3 {
   0% {
-    transform: translateY(calc(var(--shape-size) * -0.9)) rotate(-120deg);
+    transform: translateY(calc(var(--shape-size) * -0.9)) rotate(-100deg);
   }
   100% {
-    transform: translateY(calc(var(--shape-size) * -0.9)) rotate(-480deg);
+    transform: translateY(calc(var(--shape-size) * -0.9)) rotate(-460deg);
   }
 }
 @keyframes shape-4 {
   0% {
-    transform: translateY(calc(var(--shape-size) * 0.9)) rotate(-120deg);
+    transform: translateY(calc(var(--shape-size) * 0.9)) rotate(-100deg);
   }
   100% {
-    transform: translateY(calc(var(--shape-size) * 0.9)) rotate(-480deg);
+    transform: translateY(calc(var(--shape-size) * 0.9)) rotate(-460deg);
   }
 }/*# sourceMappingURL=main.css.map */

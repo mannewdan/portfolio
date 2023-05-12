@@ -1,6 +1,6 @@
 @use "./utils" as *;
 
-a {
+nav a {
   text-decoration: none;
 
   position: relative;
@@ -29,5 +29,20 @@ a {
       @include fade(250ms);
       transform: scaleX(100%);
     }
+  }
+}
+
+.hero a {
+  color: hsl(var(--c-text-medium));
+  background: hsl(var(--c-bg-light));
+  text-decoration: none;
+  padding: 0.6rem 1rem 0.5rem 1rem;
+  border-radius: 0.25rem;
+
+  box-shadow: 2px 2px 8px hsl(0 0% 0% / 25%);
+
+  transition: transform 100ms ease-out;
+  &:hover {
+    transform: translateY(-0.1rem);
   }
 }

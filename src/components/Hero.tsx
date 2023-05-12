@@ -4,10 +4,13 @@ export default function Hero() {
   return (
     <section className="hero">
       <Background />
-      <div className="container">
-        <p>picture</p>
-        <p>name</p>
-        <p>description</p>
+      <div className="main-container">
+        <h1 className="text-h-l">Hey! I'm Dan,</h1>
+        <p className="text-h-m c-text-light-75">Frontend Developer</p>
+
+        <a href="#projects" className="text-h-s">
+          See my work
+        </a>
       </div>
     </section>
   );

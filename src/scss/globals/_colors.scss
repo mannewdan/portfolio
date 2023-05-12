@@ -22,6 +22,9 @@
 .c-text-dark {
   color: hsl(var(--c-text-dark));
 }
+.c-text-light-75 {
+  color: hsl(var(--c-text-light) / 75%);
+}
 .c-text-light-50 {
   color: hsl(var(--c-text-light) / 50%);
 }
