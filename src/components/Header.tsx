@@ -1,19 +1,36 @@
+import { useState } from "react";
 import Background from "./Background";
 
 export default function Header() {
+  const [active, setActive] = useState(false);
+
   return (
     <>
       <header className="header">
         <Background />
-        <span className="text-h-s">Daniel Newman</span>
-        <nav>
-          <a href="#home" className="text-h-s c-text-light-50">
+        <span className="text-h-s unselectable">Daniel Newman</span>
+        <div
+          className={`nav-dropdown-button ${active ? "active" : ""}`}
+          onClick={() => setActive((prev) => !prev)}
+        >
+          <button></button>
+        </div>
+        <nav className={active ? "active" : ""}>
+          <a onClick={() => setActive(false)} href="#home" className="text-h-s">
             Home
           </a>
-          <a href="#projects" className="text-h-s c-text-light-50">
+          <a
+            onClick={() => setActive(false)}
+            href="#projects"
+            className="text-h-s"
+          >
             Projects
           </a>
-          <a href="#contact" className="text-h-s c-text-light-50">
+          <a
+            onClick={() => setActive(false)}
+            href="#contact"
+            className="text-h-s"
+          >
             Contact
           </a>
         </nav>

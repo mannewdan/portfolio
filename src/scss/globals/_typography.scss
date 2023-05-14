@@ -1,3 +1,5 @@
+@use "./breakpoints" as *;
+
 :root {
   --ff-body: "Rubik", sans-serif;
   --ff-header: "Jost", sans-serif;
@@ -12,17 +14,25 @@
 
 .text-h-l {
   font-family: var(--ff-header);
-  font-size: var(--fs-900);
+  font-size: var(--fs-800);
   font-weight: 700;
   line-height: 1.25;
   text-transform: uppercase;
+
+  @include breakpoint(small) {
+    font-size: var(--fs-900);
+  }
 }
 .text-h-m {
   font-family: var(--ff-header);
-  font-size: var(--fs-700);
+  font-size: var(--fs-600);
   font-weight: 700;
   line-height: 1.25;
   text-transform: uppercase;
+
+  @include breakpoint(small) {
+    font-size: var(--fs-700);
+  }
 }
 .text-h-s {
   font-family: var(--ff-header);

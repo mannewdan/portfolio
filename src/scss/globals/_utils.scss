@@ -7,9 +7,17 @@
     background-color $duration ease-out $delay,
     transform $duration ease-out $delay;
 }
+@mixin fadeColor($duration: 250ms, $delay: 0ms) {
+  transition: color $duration ease-out $delay,
+    background-color $duration ease-out $delay;
+}
 
 .block {
   position: relative;
   z-index: 2;
   background: hsl(var(--c-bg-dark));
+}
+
+.unselectable {
+  user-select: none;
 }
