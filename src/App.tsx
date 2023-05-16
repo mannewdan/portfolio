@@ -1,5 +1,6 @@
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import About from "./components/About";
 
 export default function App() {
   return (
@@ -7,7 +8,9 @@ export default function App() {
       <Header />
       <Hero />
       <main>
-        <section className="block" style={{ height: "100rem" }}>
+        <About />
+
+        <section style={{ height: "100rem" }}>
           <h1 className="text-h-l">Totam eius eos perspiciatis</h1>
           <h2 className="text-h-m">Totam eius eos perspiciatis</h2>
           <h3 className="text-h-s">Totam eius eos perspiciatis</h3>
@@ -22,8 +25,8 @@ export default function App() {
             tenetur pariatur nisi architecto sint labore est voluptatem.
           </p>
         </section>
-        <section style={{ height: "10rem" }}></section>
-        <section className="block" style={{ height: "100rem" }}>
+        <div style={{ height: "10rem" }}></div>
+        <section style={{ height: "100rem" }}>
           <div id="projects" className="scroll-destination"></div>
           <p>Scroll To Here</p>
           <p>paragraph</p>

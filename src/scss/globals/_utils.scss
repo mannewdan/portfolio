@@ -1,3 +1,8 @@
+@use "../globals/breakpoints" as *;
+
+$content-outer-padding: 2rem;
+$content-max-width: 50rem;
+
 .scroll-destination {
   height: var(--header-height);
 }
@@ -12,12 +17,18 @@
     background-color $duration ease-out $delay;
 }
 
-.block {
-  position: relative;
-  z-index: 2;
-  background: hsl(var(--c-bg-dark));
+.transparent {
+  background: transparent;
 }
-
 .unselectable {
   user-select: none;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.padded-container {
+  width: 100%;
+  max-width: $content-max-width;
+  padding-inline: $content-outer-padding;
+  margin-inline: auto;
 }

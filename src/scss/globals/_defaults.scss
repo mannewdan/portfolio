@@ -1,3 +1,5 @@
+@use "./breakpoints" as *;
+
 html {
   scroll-behavior: smooth;
   scrollbar-color: hsl(var(--c-accent-main-high)) hsl(var(--c-accent-dark-low));
@@ -31,5 +33,11 @@ h6 {
 }
 *::selection {
   color: hsl(var(--c-text-light));
-  background-color: hsl(var(--c-accent-main-high));
+  background-color: hsl(var(--c-accent-main-medium));
+}
+
+section {
+  position: relative;
+  z-index: 2;
+  background: hsl(var(--c-bg-dark));
 }

@@ -6,7 +6,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="header">
+      <header className="header padded-container">
         <Background />
         <span className="text-h-s unselectable">Daniel Newman</span>
         <div
