@@ -7,7 +7,7 @@
     display: grid;
     grid-template-columns: 1fr;
 
-    @include breakpoint(small) {
+    @include breakpoint(medium) {
       grid-template-columns: 1fr 1fr;
     }
   }
@@ -22,7 +22,7 @@
     text-align: center;
     margin-top: 1.5rem;
 
-    @include breakpoint(small) {
+    @include breakpoint(medium) {
       text-align: left;
       align-items: flex-start;
       margin-top: 0;
@@ -49,7 +49,7 @@
     margin-inline: auto;
     border-top: 2px solid hsl(var(--c-text-medium) / 25%);
     border-bottom: 2px solid hsl(var(--c-text-medium) / 25%);
-    @include breakpoint(small) {
+    @include breakpoint(medium) {
       grid-column: 1 / span 2;
       margin-top: 1.5rem;
       margin-bottom: 1.5rem;
@@ -71,7 +71,7 @@
     justify-content: flex-end;
     justify-self: center;
 
-    @include breakpoint(small) {
+    @include breakpoint(medium) {
       order: 0;
       justify-self: flex-end;
     }
