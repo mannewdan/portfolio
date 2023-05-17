@@ -469,6 +469,8 @@ section {
   padding-right: 1rem;
   text-align: center;
   margin-top: 1.5rem;
+  max-width: 40ch;
+  margin-inline: auto;
   position: relative;
   z-index: 2;
 }
@@ -477,10 +479,16 @@ section {
     text-align: left;
     align-items: flex-start;
     margin-top: 0;
+    max-width: unset;
   }
 }
-.about .text-container:hover + .image-container > .little-circle {
-  transform: translateX(-50%) scale(0.9);
+.about .text-container:hover + .image-container > .large-circle {
+  transform: translateX(50%) scale(0.9);
+}
+@media (min-width: 55em) {
+  .about .text-container:hover + .image-container > .large-circle {
+    transform: translateX(-50%) scale(0.9);
+  }
 }
 .about .name {
   color: hsl(var(--c-text-light));
@@ -554,8 +562,8 @@ section {
   position: absolute;
   z-index: 1;
 }
-.about .image-container .big-circle,
-.about .image-container .little-circle {
+.about .image-container .small-circle,
+.about .image-container .large-circle {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -569,17 +577,40 @@ section {
           clip-path: polygon(50% 0%, 50% 100%, 0% 100%, 0% 0%);
   transition: transform 150ms cubic-bezier(0, 0.22, 0.28, 2.05);
 }
-.about .image-container .big-circle {
-  width: 75%;
+.about .image-container .small-circle {
+  width: 50%;
   border: 12px solid hsl(var(--c-text-medium)/15%);
   transform: translateX(-50%);
+  -webkit-clip-path: polygon(50% 0%, 50% 100%, 0% 100%, 0% 0%);
+          clip-path: polygon(50% 0%, 50% 100%, 0% 100%, 0% 0%);
+  bottom: 50%;
 }
-.about .image-container .little-circle {
-  width: 150%;
+@media (min-width: 55em) {
+  .about .image-container .small-circle {
+    bottom: 0;
+    width: 75%;
+  }
+}
+.about .image-container .large-circle {
+  width: 100%;
   border: 4px solid hsl(var(--c-text-medium-light)/15%);
-  transform: translateX(-50%);
+  transform: translateX(50%);
+  right: 0;
+  top: 25%;
+  -webkit-clip-path: polygon(100% 0%, 100% 100%, 50% 100%, 50% 0%);
+          clip-path: polygon(100% 0%, 100% 100%, 50% 100%, 50% 0%);
 }
-.about .image-container:hover .big-circle {
+@media (min-width: 55em) {
+  .about .image-container .large-circle {
+    width: 150%;
+    transform: translateX(-50%);
+    left: 0;
+    top: 0;
+    -webkit-clip-path: polygon(50% 0%, 50% 100%, 0% 100%, 0% 0%);
+            clip-path: polygon(50% 0%, 50% 100%, 0% 100%, 0% 0%);
+  }
+}
+.about .image-container:hover .small-circle {
   transform: translateX(-50%) scale(0.8);
 }
 

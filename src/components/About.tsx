@@ -15,8 +15,8 @@ export default function About() {
         {/* Image */}
         <div className="image-container">
           <div className="background"></div>
-          <div className="big-circle"></div>
-          <div className="little-circle"></div>
+          <div className="small-circle"></div>
+          <div className="large-circle"></div>
           <img src="pfp-grayer.png"></img>
         </div>
 
