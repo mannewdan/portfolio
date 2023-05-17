@@ -61,6 +61,7 @@ h6 {
   --c-bg-dark: 237 10% 16%;
   --c-text-dark: 209 48% 24%;
   --c-text-medium: 209 12% 50%;
+  --c-text-medium-light: 209 12% 75%;
   --c-text-light: 0 0% 100%;
   --c-accent-main-high: 20 100% 72%;
   --c-accent-main-medium: 10 100% 72%;
@@ -506,6 +507,14 @@ section {
     text-align: left;
     max-width: unset;
   }
+}
+.about .history a {
+  color: hsl(var(--c-text-medium-light));
+  text-decoration: none;
+  transition: color 75ms ease-out 0ms, background-color 75ms ease-out 0ms;
+}
+.about .history a:hover {
+  color: hsl(var(--c-accent-main-medium));
 }
 .about .image-container {
   background: hsl(var(--c-bg-medium)/10%);

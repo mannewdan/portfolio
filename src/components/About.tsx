@@ -14,7 +14,21 @@ export default function About() {
           <img src="pfp-grayer.png"></img>
         </div>
         <p className="text-b-s c-text-medium history">
-          {`I became interested in web development in the Summer of 2022, and pursued my learning through scrimba.com and frontendmentor.io challenges, as well as a few personal projects. I have a background in programming & game art as a hobbyist of 10 years using C# and the Unity game engine.`}
+          {`I became interested in web development in the Summer of 2022, and pursued my learning through `}
+          <a
+            target="_blank"
+            href="https://scrimba.com/certificate/u7N4vxsz/gfrontend"
+          >
+            scrimba.com
+          </a>
+          {` and `}
+          <a
+            target="_blank"
+            href="https://www.frontendmentor.io/profile/mannewdan"
+          >
+            frontendmentor.io challenges
+          </a>
+          {`, as well as a few personal projects. I have a background in programming & game art as a hobbyist of 10 years using C# and the Unity game engine.`}
         </p>
       </div>
     </section>
