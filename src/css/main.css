@@ -144,6 +144,7 @@ html {
 }
 html::-webkit-scrollbar {
   width: 10px;
+  height: 10px;
 }
 html::-webkit-scrollbar-thumb {
   background: linear-gradient(86deg, hsl(var(--c-accent-main-high)), hsl(var(--c-accent-main-low)));
@@ -468,6 +469,8 @@ section {
   padding-right: 1rem;
   text-align: center;
   margin-top: 1.5rem;
+  position: relative;
+  z-index: 2;
 }
 @media (min-width: 55em) {
   .about .text-container {
@@ -475,6 +478,9 @@ section {
     align-items: flex-start;
     margin-top: 0;
   }
+}
+.about .text-container:hover + .image-container > .little-circle {
+  transform: translateX(-50%) scale(0.9);
 }
 .about .name {
   color: hsl(var(--c-text-light));
@@ -517,7 +523,6 @@ section {
   color: hsl(var(--c-accent-main-medium));
 }
 .about .image-container {
-  background: hsl(var(--c-bg-medium)/10%);
   width: 15rem;
   padding-top: 5rem;
   order: -1;
@@ -527,6 +532,8 @@ section {
   justify-self: center;
   border-bottom-left-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
+  position: relative;
+  z-index: 1;
 }
 @media (min-width: 55em) {
   .about .image-container {
@@ -537,6 +544,43 @@ section {
 .about .image-container img {
   border-bottom-left-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
+  position: relative;
+  z-index: 2;
+}
+.about .image-container .background {
+  width: 100%;
+  height: 100%;
+  background: hsl(var(--c-bg-medium)/7%);
+  position: absolute;
+  z-index: 1;
+}
+.about .image-container .big-circle,
+.about .image-container .little-circle {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  z-index: -5;
+  aspect-ratio: 1;
+  border-radius: 50rem;
+  -webkit-clip-path: polygon(50% 0%, 50% 100%, 0% 100%, 0% 0%);
+          clip-path: polygon(50% 0%, 50% 100%, 0% 100%, 0% 0%);
+  transition: transform 150ms cubic-bezier(0, 0.22, 0.28, 2.05);
+}
+.about .image-container .big-circle {
+  width: 75%;
+  border: 12px solid hsl(var(--c-text-medium)/15%);
+  transform: translateX(-50%);
+}
+.about .image-container .little-circle {
+  width: 150%;
+  border: 4px solid hsl(var(--c-text-medium-light)/15%);
+  transform: translateX(-50%);
+}
+.about .image-container:hover .big-circle {
+  transform: translateX(-50%) scale(0.8);
 }
 
 :root {

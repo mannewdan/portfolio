@@ -2,6 +2,7 @@ export default function About() {
   return (
     <section className="about">
       <div className="grid padded-container">
+        {/* Main Text */}
         <div className="text-container">
           <h2 className="text-h-m name">Daniel Newman</h2>
           <p className="text-h-s title">Frontend Developer</p>
@@ -10,9 +11,16 @@ export default function About() {
             I'm excited to start my career in web development!`}
           </p>
         </div>
+
+        {/* Image */}
         <div className="image-container">
+          <div className="background"></div>
+          <div className="big-circle"></div>
+          <div className="little-circle"></div>
           <img src="pfp-grayer.png"></img>
         </div>
+
+        {/* History */}
         <p className="text-b-s c-text-medium history">
           {`I became interested in web development in the Summer of 2022, and pursued my learning through `}
           <a
