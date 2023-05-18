@@ -1,6 +1,7 @@
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import About from "./components/About";
+import Skills from "./components/Skills";
 
 export default function App() {
   return (
@@ -9,6 +10,7 @@ export default function App() {
       <Hero />
       <main>
         <About />
+        <Skills />
 
         <section style={{ height: "100rem" }}>
           <h1 className="text-h-l">Totam eius eos perspiciatis</h1>

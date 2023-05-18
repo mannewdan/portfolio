@@ -1,0 +1,53 @@
+@use "../globals/breakpoints" as *;
+
+.skills {
+  padding-bottom: 4rem;
+
+  h2 {
+    text-align: center;
+    color: hsl(var(--c-accent-main-medium));
+    margin-bottom: 1.5rem;
+
+    @include breakpoint(medium) {
+      font-size: var(--fs-700);
+    }
+  }
+
+  .grid {
+    $gap-size: 1.5rem;
+
+    display: grid;
+    grid-template-columns: repeat(3, calc((33.333% - ($gap-size * 2 / 3))));
+    gap: $gap-size;
+
+    padding: 1rem;
+    border: 1px hsl(var(--c-text-medium));
+    border-style: dashed;
+    border-radius: 0.5rem;
+
+    @include breakpoint(small) {
+      grid-template-columns: repeat(4, calc(25% - ($gap-size * 3 / 4)));
+    }
+  }
+
+  .skill-element {
+    border-radius: 0.25rem;
+    background-color: hsl(var(--c-accent-dark-high) / 35%);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+
+    color: hsl(var(--c-text-medium-light));
+
+    .blend {
+      background-color: hsl(var(--c-text-medium));
+    }
+    &:hover .blend {
+      background-color: hsl(var(--c-accent-main-medium));
+    }
+  }
+}

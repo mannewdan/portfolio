@@ -1,0 +1,10 @@
+[
+  { "name": "HTML", "url": "logos/html.svg" },
+  { "name": "CSS", "url": "logos/css.svg" },
+  { "name": "Sass", "url": "logos/sass.svg" },
+  { "name": "JavaScript", "url": "logos/js.svg" },
+  { "name": "TypeScript", "url": "logos/ts.svg" },
+  { "name": "React", "url": "logos/react.svg" },
+  { "name": "Git", "url": "logos/git.svg" },
+  { "name": "C#", "url": "logos/csharp.svg" }
+]
