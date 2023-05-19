@@ -23,6 +23,8 @@ body {
   font-family: var(--ff-body);
   color: hsl(0 0% 100%);
   background-color: hsl(0 0% 14%);
+  overflow-x: hidden;
+  min-width: 100vw;
 }
 h1,
 h2,
