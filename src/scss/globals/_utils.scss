@@ -32,3 +32,6 @@ $content-max-width: 50rem;
   padding-inline: $content-outer-padding;
   margin-inline: auto;
 }
+.grabbing {
+  cursor: grabbing;
+}

@@ -17,7 +17,6 @@
     $gap-size: 1.5rem;
 
     display: grid;
-    grid-template-columns: repeat(3, calc((33.333% - ($gap-size * 2 / 3))));
     gap: $gap-size;
 
     padding: 1rem;
@@ -25,14 +24,18 @@
     border-style: dashed;
     border-radius: 0.5rem;
 
+    --column-count: 3;
+    grid-template-columns: repeat(3, calc((33.333% - ($gap-size * 2 / 3))));
     @include breakpoint(small) {
+      --column-count: 4;
       grid-template-columns: repeat(4, calc(25% - ($gap-size * 3 / 4)));
     }
   }
 
   .skill-element {
+    cursor: grab;
     border-radius: 0.25rem;
-    background-color: hsl(var(--c-accent-dark-high) / 35%);
+    background-color: hsl(var(--c-accent-dark-high));
 
     display: flex;
     flex-direction: column;
@@ -41,13 +44,44 @@
     gap: 1rem;
     padding: 1rem;
 
-    color: hsl(var(--c-text-medium-light));
+    position: relative;
 
+    img {
+      pointer-events: none;
+    }
+
+    .grabbing & {
+      cursor: grabbing;
+    }
+    &.grabbed {
+      cursor: grabbing;
+      pointer-events: none;
+      z-index: 1;
+      box-shadow: 0px 0px 8px hsl(0 0% 0% / 20%);
+    }
+
+    color: hsl(var(--c-text-medium-light));
     .blend {
       background-color: hsl(var(--c-text-medium));
     }
-    &:hover .blend {
+    body:not(.grabbing) &:hover .blend,
+    &.grabbed .blend {
       background-color: hsl(var(--c-accent-main-medium));
+    }
+    span {
+      transition: color 75ms ease-out;
+      font-size: var(--fs-300);
+      @include breakpoint(medium) {
+        font-size: var(--fs-400);
+      }
+    }
+    body:not(.grabbing) &:hover span,
+    &.grabbed span {
+      color: hsl(var(--c-accent-main-medium));
+    }
+    user-select: none;
+    * {
+      user-select: none;
     }
   }
 }
