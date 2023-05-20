@@ -2,6 +2,7 @@
 
 .skills {
   padding-bottom: 4rem;
+  z-index: 3;
 
   h2 {
     text-align: center;
@@ -14,14 +15,13 @@
   }
 
   .grid {
-    $gap-size: 1.5rem;
+    $gap-size: 1rem;
 
     display: grid;
     gap: $gap-size;
 
-    padding: 1rem;
-    border: 1px hsl(var(--c-text-medium));
-    border-style: dashed;
+    // padding: 1rem;
+    //border: 2px dashed hsl(var(--c-text-medium));
     border-radius: 0.5rem;
 
     --column-count: 3;
@@ -32,10 +32,27 @@
     }
   }
 
+  //SkillCell
+  .skill-cell {
+    border: 2px dashed hsl(var(--c-text-medium));
+    padding: 1px;
+    border-radius: 0.25rem;
+    height: 100%;
+  }
+
+  //Grabbed SkillElement
+  .grabbed-skill {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  //SkillElement
   .skill-element {
     cursor: grab;
-    border-radius: 0.25rem;
-    background-color: hsl(var(--c-accent-dark-high));
+    position: relative;
 
     display: flex;
     flex-direction: column;
@@ -44,29 +61,23 @@
     gap: 1rem;
     padding: 1rem;
 
-    position: relative;
-
-    img {
-      pointer-events: none;
-    }
-
-    .grabbing & {
-      cursor: grabbing;
-    }
-    &.grabbed {
-      cursor: grabbing;
-      pointer-events: none;
-      z-index: 1;
-      box-shadow: 0px 0px 8px hsl(0 0% 0% / 20%);
-    }
-
     color: hsl(var(--c-text-medium-light));
-    .blend {
-      background-color: hsl(var(--c-text-medium));
+    background-color: hsl(var(--c-accent-dark-high));
+    border-radius: 0.25rem;
+
+    user-select: none;
+    & * {
+      user-select: none;
+      pointer-events: none;
     }
-    body:not(.grabbing) &:hover .blend,
-    &.grabbed .blend {
-      background-color: hsl(var(--c-accent-main-medium));
+    &.hidden {
+      display: none;
+    }
+
+    //default colors
+    .blend {
+      transition: background-color 75ms ease-out;
+      background-color: hsl(var(--c-text-medium));
     }
     span {
       transition: color 75ms ease-out;
@@ -75,13 +86,14 @@
         font-size: var(--fs-400);
       }
     }
+    //hover states
+    body:not(.grabbing) &:hover .blend,
+    &.grabbed .blend {
+      background-color: hsl(var(--c-accent-main-medium));
+    }
     body:not(.grabbing) &:hover span,
     &.grabbed span {
       color: hsl(var(--c-accent-main-medium));
-    }
-    user-select: none;
-    * {
-      user-select: none;
     }
   }
 }
