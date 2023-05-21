@@ -734,6 +734,18 @@ section {
     font-size: var(--fs-700);
   }
 }
+.skills > p {
+  margin-top: 1rem;
+  text-align: center;
+}
+.skills > p a {
+  color: hsl(var(--c-text-medium-light));
+  text-decoration: none;
+  transition: color 75ms ease-out 0ms, background-color 75ms ease-out 0ms;
+}
+.skills > p a:hover {
+  color: hsl(var(--c-accent-main-medium));
+}
 .skills .grid {
   display: grid;
   gap: 1rem;

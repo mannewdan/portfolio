@@ -164,6 +164,17 @@ export default function Skills() {
           <SkillElement skill={grabbedSkill} isGrabbed={true} />
         </div>
       )}
+
+      <p className="text-h-s c-text-medium">
+        &#8679;{" "}
+        <a
+          target="_blank"
+          href="https://github.com/mannewdan/portfolio/tree/main/src/components/SkillsSection"
+        >
+          coded
+        </a>{" "}
+        by me
+      </p>
     </section>
   );
 }

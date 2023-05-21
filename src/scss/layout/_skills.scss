@@ -1,4 +1,5 @@
 @use "../globals/breakpoints" as *;
+@use "../globals/utils" as *;
 
 .skills {
   padding-bottom: 4rem;
@@ -11,6 +12,20 @@
 
     @include breakpoint(medium) {
       font-size: var(--fs-700);
+    }
+  }
+  & > p {
+    margin-top: 1rem;
+    text-align: center;
+
+    a {
+      color: hsl(var(--c-text-medium-light));
+      text-decoration: none;
+      @include fadeColor(75ms);
+
+      &:hover {
+        color: hsl(var(--c-accent-main-medium));
+      }
     }
   }
 
