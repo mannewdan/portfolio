@@ -98,8 +98,8 @@ export default function Skills() {
 
           const target = e.target as HTMLElement;
           setCellPosOffset({
-            x: e.clientX - target.getBoundingClientRect().x + 2,
-            y: e.clientY - target.getBoundingClientRect().y + 2,
+            x: e.clientX - target.getBoundingClientRect().x,
+            y: e.clientY - target.getBoundingClientRect().y,
           });
         }}
         onHover={() => {

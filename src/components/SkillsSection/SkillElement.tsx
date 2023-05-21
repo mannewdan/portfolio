@@ -15,22 +15,32 @@ export default function SkillElement({
   isGrabbed,
   startingOffset,
 }: SkillElementProps) {
-  const [moveToDestination, setMoveToDestination] = useState(false);
+  const duration = 150;
+  const [timer, setTimer] = useState(duration);
+  let ratio = timer / duration;
+  ratio = ratio * ratio * ratio;
+
   useEffect(() => {
-    setTimeout(() => {
-      setMoveToDestination(true);
-    }, 1);
-  }, []);
+    if (timer > 0) {
+      setTimeout(() => {
+        setTimer((prev) => {
+          return Math.max(0, prev - 10);
+        });
+      }, 10);
+    }
+  }, [timer]);
 
   return (
     <div
       id={skill.name}
       className={`skill-element ${isGrabbed ? "grabbed" : ""} ${
         isHidden ? "hidden" : ""
-      } ${moveToDestination ? "move-to-destination" : ""}`}
+      }`}
       style={{
         transform: startingOffset
-          ? `translateX(${startingOffset.x}px) translateY(${startingOffset.y}px)`
+          ? `translateX(${startingOffset.x * ratio}px) translateY(${
+              startingOffset.y * ratio
+            }px)`
           : "",
       }}
     >

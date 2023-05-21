@@ -35,8 +35,6 @@
     display: grid;
     gap: $gap-size;
 
-    // padding: 1rem;
-    //border: 2px dashed hsl(var(--c-text-medium));
     border-radius: 0.5rem;
 
     --column-count: 3;
@@ -99,10 +97,6 @@
     }
     &.hidden {
       display: none;
-    }
-    &.move-to-destination {
-      transition: transform 125ms ease-out;
-      transform: translateX(0) translateY(0) !important;
     }
 
     //default colors
