@@ -8,12 +8,13 @@ import useMousePosition from "./useMousePosition";
 export type SkillT = {
   name: string;
   url: string;
+  previousPosition?: { x: number; y: number } | undefined;
 };
 
 export default function Skills() {
   const [skills, setSkills] = useState(
     data.map((item) => {
-      return { ...item };
+      return { ...item } as SkillT;
     })
   );
   const [grabbedSkill, setGrabbedSkill] = useState<SkillT | null>(null);
@@ -30,6 +31,26 @@ export default function Skills() {
   useEffect(() => {
     //clear grabbed skill on release/blur
     function release() {
+      if (grabbedSkill) {
+        setSkills((prev) => {
+          return prev.map((item) => {
+            if (item.name === grabbedSkill.name) {
+              const position = {
+                x: mousePos.x - cellPosOffset.x,
+                y: mousePos.y - cellPosOffset.y,
+              };
+              return {
+                ...item,
+                previousPosition: {
+                  x: mousePos.x - cellPosOffset.x,
+                  y: mousePos.y - cellPosOffset.y,
+                },
+              };
+            } else return item;
+          });
+        });
+      }
+
       setGrabbedSkill(null);
     }
     window.addEventListener("mouseup", release);
@@ -38,7 +59,7 @@ export default function Skills() {
       window.removeEventListener("mouseup", release);
       window.removeEventListener("blur", release);
     };
-  }, []);
+  }, [grabbedSkill, mousePos, cellPosOffset]);
   useEffect(() => {
     //change cursor to 'grabbing' while grabbing a skill
     if (grabbedSkill !== null) {
@@ -77,17 +98,38 @@ export default function Skills() {
 
           const target = e.target as HTMLElement;
           setCellPosOffset({
-            x: e.clientX - target.getBoundingClientRect().x,
-            y: e.clientY - target.getBoundingClientRect().y,
+            x: e.clientX - target.getBoundingClientRect().x + 2,
+            y: e.clientY - target.getBoundingClientRect().y + 2,
           });
         }}
         onHover={() => {
           if (grabbedSkill) {
             setSkills((prev) => {
-              const newSkills = prev.filter(
-                (item) => item.name !== grabbedSkill.name
-              );
-              newSkills.splice(i, 0, grabbedSkill);
+              const newSkills = prev
+                .filter((item) => item.name !== grabbedSkill.name)
+                .map((item) => {
+                  //find each item's current position (so that they can be transitioned later)
+                  let position = undefined;
+                  if (containerRef.current?.childNodes) {
+                    containerRef.current.childNodes.forEach((child) => {
+                      if (child.childNodes.length < 1) return;
+                      const grandchild = child.childNodes[0] as HTMLElement;
+                      if (grandchild.id === item.name) {
+                        position = {
+                          x: grandchild.getBoundingClientRect().x,
+                          y: grandchild.getBoundingClientRect().y,
+                        };
+                      }
+                    });
+                  }
+
+                  return { ...item, previousPosition: position };
+                }) as Array<SkillT>;
+
+              //insert the grabbed skill into the hovered cell
+              newSkills.splice(i, 0, {
+                ...grabbedSkill,
+              });
               return newSkills;
             });
           }
@@ -112,8 +154,8 @@ export default function Skills() {
         <div
           className="grabbed-skill"
           style={{
-            width: `${cellSize.x}px`,
-            height: `${cellSize.y}px`,
+            width: `${cellSize.x - 2}px`,
+            height: `${cellSize.y - 2}px`,
             transform: `translateX(${
               mousePos.x - cellPosOffset.x
             }px) translateY(${mousePos.y - cellPosOffset.y}px)`,

@@ -21,6 +21,20 @@ export default function SkillCell({
 }: SkillCellProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
+  let isOffset = false;
+  let xOffset = 0;
+  let yOffset = 0;
+  if (skill.previousPosition && containerRef && containerRef.current) {
+    xOffset =
+      skill.previousPosition.x - containerRef.current.getBoundingClientRect().x;
+    yOffset =
+      skill.previousPosition.y - containerRef.current.getBoundingClientRect().y;
+    isOffset = true;
+  }
+
+  const isHidden =
+    skill.name === grabbedSkill?.name && skill.url === grabbedSkill?.url;
+
   return (
     <div
       ref={containerRef}
@@ -31,11 +45,12 @@ export default function SkillCell({
       onMouseEnter={onHover}
       className="skill-cell"
     >
+      {/* Rerender is forced when isHidden changes so animation can play */}
       <SkillElement
+        key={skill.name + " " + isHidden}
         skill={skill}
-        isHidden={
-          skill.name === grabbedSkill?.name && skill.url === grabbedSkill?.url
-        }
+        isHidden={isHidden}
+        startingOffset={isOffset ? { x: xOffset, y: yOffset } : undefined}
       />
     </div>
   );
