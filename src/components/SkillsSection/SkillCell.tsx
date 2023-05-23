@@ -3,21 +3,17 @@ import SkillElement from "./SkillElement";
 import { SkillT } from "./Skills";
 
 type SkillCellProps = {
-  index: number;
   skill: SkillT;
   onGrab: (e: React.MouseEvent) => void;
   onHover: () => void;
   grabbedSkill: SkillT | null;
-  setCellPosOffset: (offset: { x: number; y: number }) => void;
 };
 
 export default function SkillCell({
-  index,
   skill,
   onGrab,
   onHover,
   grabbedSkill,
-  setCellPosOffset,
 }: SkillCellProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 

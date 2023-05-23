@@ -18,9 +18,7 @@ export default function Skills() {
     })
   );
   const [grabbedSkill, setGrabbedSkill] = useState<SkillT | null>(null);
-  const [hoveredCell, setHoveredCell] = useState(0);
   const [cellSize, setCellSize] = useState({ x: 0, y: 0 });
-  const [gapSize, setGapSize] = useState(0);
   const [columns, setColumns] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const [windowSize] = useWindowSize();
@@ -35,10 +33,6 @@ export default function Skills() {
         setSkills((prev) => {
           return prev.map((item) => {
             if (item.name === grabbedSkill.name) {
-              const position = {
-                x: mousePos.x - cellPosOffset.x,
-                y: mousePos.y - cellPosOffset.y,
-              };
               return {
                 ...item,
                 previousPosition: {
@@ -92,13 +86,57 @@ export default function Skills() {
     );
   }, [containerRef, windowSize]);
 
+  //functions
+  function moveSkill(skill: SkillT, i: number) {
+    setSkills((prev) => {
+      let indexOfGrabbed = -1;
+      let newSkills = prev.map((item, index) => {
+        if (item.name === skill.name) indexOfGrabbed = index;
+
+        //find each item's current position (so that they can be transitioned later)
+        let position = undefined;
+        if (containerRef.current?.childNodes) {
+          containerRef.current.childNodes.forEach((child) => {
+            if (child.childNodes.length < 1) return;
+            const grandchild = child.childNodes[0] as HTMLElement;
+            if (grandchild.id === item.name) {
+              position = {
+                x: grandchild.getBoundingClientRect().x,
+                y: grandchild.getBoundingClientRect().y,
+              };
+            }
+          });
+        }
+
+        return { ...item, previousPosition: position };
+      }) as Array<SkillT>;
+
+      if (
+        indexOfGrabbed >= 0 &&
+        Math.floor(indexOfGrabbed / columns) !== Math.floor(i / columns)
+      ) {
+        //for different rows, swap the grabbed element with the element in the hovered cell
+        const hoveredElement = newSkills[i];
+        newSkills[i] = { ...skill };
+        newSkills[indexOfGrabbed] = { ...hoveredElement };
+      } else {
+        //for same row, remove grabbed element and then insert it into the hovered cell
+        newSkills = newSkills.filter((item) => item.name !== skill.name);
+        newSkills.splice(i, 0, {
+          ...skill,
+        });
+      }
+
+      return newSkills;
+    });
+  }
+
   //rendering
   const cellEls = [];
   for (let i = 0; i < skills.length; i++) {
     cellEls.push(
       <SkillCell
         key={i}
-        index={i}
         skill={skills[i]}
         onGrab={(e: React.MouseEvent) => {
           setGrabbedSkill(skills[i]);
@@ -110,55 +148,11 @@ export default function Skills() {
           });
         }}
         onHover={() => {
-          if (grabbedSkill) {
-            setSkills((prev) => {
-              const cache = prev[i];
-              let indexOfGrabbed = -1;
-              let newSkills = prev.map((item, index) => {
-                if (item.name === grabbedSkill.name) indexOfGrabbed = index;
+          if (!grabbedSkill) return;
 
-                //find each item's current position (so that they can be transitioned later)
-                let position = undefined;
-                if (containerRef.current?.childNodes) {
-                  containerRef.current.childNodes.forEach((child) => {
-                    if (child.childNodes.length < 1) return;
-                    const grandchild = child.childNodes[0] as HTMLElement;
-                    if (grandchild.id === item.name) {
-                      position = {
-                        x: grandchild.getBoundingClientRect().x,
-                        y: grandchild.getBoundingClientRect().y,
-                      };
-                    }
-                  });
-                }
-
-                return { ...item, previousPosition: position };
-              }) as Array<SkillT>;
-
-              if (
-                indexOfGrabbed >= 0 &&
-                Math.floor(indexOfGrabbed / columns) !== Math.floor(i / columns)
-              ) {
-                //for different rows, swap the grabbed element with the element in the hovered cell
-                const hoveredElement = newSkills[i];
-                newSkills[i] = { ...grabbedSkill };
-                newSkills[indexOfGrabbed] = { ...hoveredElement };
-              } else {
-                //for same row, remove grabbed element and then insert it into the hovered cell
-                newSkills = newSkills.filter(
-                  (item) => item.name !== grabbedSkill.name
-                );
-                newSkills.splice(i, 0, {
-                  ...grabbedSkill,
-                });
-              }
-
-              return newSkills;
-            });
-          }
+          moveSkill(grabbedSkill, i);
         }}
         grabbedSkill={grabbedSkill}
-        setCellPosOffset={setCellPosOffset}
       />
     );
   }
