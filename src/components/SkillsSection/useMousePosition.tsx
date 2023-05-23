@@ -7,9 +7,9 @@ export default function useMousePosition() {
     function onMove(e: MouseEvent) {
       setMousePos({ x: e.clientX, y: e.clientY });
     }
-    window.addEventListener("mousemove", onMove);
+    window.addEventListener("pointermove", onMove);
     return () => {
-      window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("pointermove", onMove);
     };
   });
 

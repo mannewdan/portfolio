@@ -30,8 +30,12 @@ export default function Skills() {
   //useEffects
   useEffect(() => {
     //clear grabbed skill on release/blur
+    function handlePointer(e: PointerEvent) {
+      if (e.pointerType === "touch") return;
+      release();
+    }
     function release() {
-      if (!touchMode && grabbedSkill) {
+      if (grabbedSkill) {
         setSkills((prev) => {
           return prev.map((item) => {
             if (item.name === grabbedSkill.name) {
@@ -49,10 +53,10 @@ export default function Skills() {
 
       setGrabbedSkill(null);
     }
-    window.addEventListener("mouseup", release);
+    window.addEventListener("pointerup", handlePointer);
     window.addEventListener("blur", release);
     return () => {
-      window.removeEventListener("mouseup", release);
+      window.removeEventListener("pointerup", handlePointer);
       window.removeEventListener("blur", release);
     };
   }, [grabbedSkill, mousePos, cellPosOffset]);
@@ -162,7 +166,7 @@ export default function Skills() {
 
           moveSkill(grabbedSkill, i);
         }}
-        onTap={(e: TouchEvent) => {
+        onTap={(e: React.TouchEvent) => {
           setTouchMode(true);
 
           if (grabbedSkill) {
@@ -176,8 +180,8 @@ export default function Skills() {
             setGrabbedSkill(skills[i]);
             const target = e.target as HTMLElement;
             setCellPosOffset({
-              x: e.touches[0].clientX - target.getBoundingClientRect().x,
-              y: e.touches[0].clientY - target.getBoundingClientRect().y,
+              x: e.changedTouches[0].clientX - target.getBoundingClientRect().x,
+              y: e.changedTouches[0].clientY - target.getBoundingClientRect().y,
             });
           }
         }}
