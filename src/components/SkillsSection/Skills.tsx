@@ -77,12 +77,19 @@ export default function Skills() {
       return;
     }
 
-    //recalculate cell size
+    //recalculate cell size & obtain column count
     const cell = containerRef.current.childNodes[0] as HTMLDivElement;
     setCellSize({
       x: cell.getBoundingClientRect().width,
       y: cell.getBoundingClientRect().height,
     });
+    setColumns(
+      parseInt(
+        window
+          .getComputedStyle(containerRef.current as Element)
+          .getPropertyValue("--column-count")
+      )
+    );
   }, [containerRef, windowSize]);
 
   //rendering
@@ -105,31 +112,47 @@ export default function Skills() {
         onHover={() => {
           if (grabbedSkill) {
             setSkills((prev) => {
-              const newSkills = prev
-                .filter((item) => item.name !== grabbedSkill.name)
-                .map((item) => {
-                  //find each item's current position (so that they can be transitioned later)
-                  let position = undefined;
-                  if (containerRef.current?.childNodes) {
-                    containerRef.current.childNodes.forEach((child) => {
-                      if (child.childNodes.length < 1) return;
-                      const grandchild = child.childNodes[0] as HTMLElement;
-                      if (grandchild.id === item.name) {
-                        position = {
-                          x: grandchild.getBoundingClientRect().x,
-                          y: grandchild.getBoundingClientRect().y,
-                        };
-                      }
-                    });
-                  }
+              const cache = prev[i];
+              let indexOfGrabbed = -1;
+              let newSkills = prev.map((item, index) => {
+                if (item.name === grabbedSkill.name) indexOfGrabbed = index;
 
-                  return { ...item, previousPosition: position };
-                }) as Array<SkillT>;
+                //find each item's current position (so that they can be transitioned later)
+                let position = undefined;
+                if (containerRef.current?.childNodes) {
+                  containerRef.current.childNodes.forEach((child) => {
+                    if (child.childNodes.length < 1) return;
+                    const grandchild = child.childNodes[0] as HTMLElement;
+                    if (grandchild.id === item.name) {
+                      position = {
+                        x: grandchild.getBoundingClientRect().x,
+                        y: grandchild.getBoundingClientRect().y,
+                      };
+                    }
+                  });
+                }
 
-              //insert the grabbed skill into the hovered cell
-              newSkills.splice(i, 0, {
-                ...grabbedSkill,
-              });
+                return { ...item, previousPosition: position };
+              }) as Array<SkillT>;
+
+              if (
+                indexOfGrabbed >= 0 &&
+                Math.floor(indexOfGrabbed / columns) !== Math.floor(i / columns)
+              ) {
+                //for different rows, swap the grabbed element with the element in the hovered cell
+                const hoveredElement = newSkills[i];
+                newSkills[i] = { ...grabbedSkill };
+                newSkills[indexOfGrabbed] = { ...hoveredElement };
+              } else {
+                //for same row, remove grabbed element and then insert it into the hovered cell
+                newSkills = newSkills.filter(
+                  (item) => item.name !== grabbedSkill.name
+                );
+                newSkills.splice(i, 0, {
+                  ...grabbedSkill,
+                });
+              }
+
               return newSkills;
             });
           }
