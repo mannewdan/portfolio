@@ -1,19 +1,23 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import SkillElement from "./SkillElement";
 import { SkillT } from "./Skills";
 
 type SkillCellProps = {
   skill: SkillT;
-  onGrab: (e: React.MouseEvent) => void;
+  onClick: (e: React.MouseEvent) => void;
+  onTap: (e: TouchEvent) => void;
   onHover: () => void;
-  grabbedSkill: SkillT | null;
+  isHidden: boolean;
+  isSelected: boolean;
 };
 
 export default function SkillCell({
   skill,
-  onGrab,
+  onClick,
+  onTap,
   onHover,
-  grabbedSkill,
+  isHidden,
+  isSelected,
 }: SkillCellProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -28,15 +32,28 @@ export default function SkillCell({
     isOffset = true;
   }
 
-  const isHidden =
-    skill.name === grabbedSkill?.name && skill.url === grabbedSkill?.url;
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    function handleTap(e: TouchEvent) {
+      e.preventDefault();
+      onTap(e);
+    }
+    containerRef.current.addEventListener("touchstart", handleTap, {
+      passive: false,
+    });
+    return () => {
+      if (!containerRef.current) return;
+      containerRef.current.removeEventListener("touchstart", handleTap);
+    };
+  }, [onTap]);
 
   return (
     <div
       ref={containerRef}
       onMouseDown={(e) => {
         e.preventDefault();
-        onGrab(e);
+        onClick(e);
       }}
       onMouseEnter={onHover}
       className="skill-cell"
@@ -46,6 +63,7 @@ export default function SkillCell({
         key={skill.name + " " + isHidden}
         skill={skill}
         isHidden={isHidden}
+        isSelected={isSelected}
         startingOffset={isOffset ? { x: xOffset, y: yOffset } : undefined}
       />
     </div>

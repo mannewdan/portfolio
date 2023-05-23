@@ -5,6 +5,7 @@ import { SkillT } from "./Skills";
 type SkillElementProps = {
   skill: SkillT;
   isHidden?: boolean;
+  isSelected?: boolean;
   isGrabbed?: boolean;
   startingOffset?: { x: number; y: number } | undefined;
 };
@@ -12,6 +13,7 @@ type SkillElementProps = {
 export default function SkillElement({
   skill,
   isHidden,
+  isSelected,
   isGrabbed,
   startingOffset,
 }: SkillElementProps) {
@@ -35,7 +37,7 @@ export default function SkillElement({
       id={skill.name}
       className={`skill-element ${isGrabbed ? "grabbed" : ""} ${
         isHidden ? "hidden" : ""
-      }`}
+      } ${isSelected ? "grabbed" : ""}`}
       style={{
         transform: startingOffset
           ? `translateX(${startingOffset.x * ratio}px) translateY(${

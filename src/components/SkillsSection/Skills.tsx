@@ -18,6 +18,7 @@ export default function Skills() {
     })
   );
   const [grabbedSkill, setGrabbedSkill] = useState<SkillT | null>(null);
+  const [touchMode, setTouchMode] = useState(false);
   const [cellSize, setCellSize] = useState({ x: 0, y: 0 });
   const [columns, setColumns] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -29,7 +30,7 @@ export default function Skills() {
   useEffect(() => {
     //clear grabbed skill on release/blur
     function release() {
-      if (grabbedSkill) {
+      if (!touchMode && grabbedSkill) {
         setSkills((prev) => {
           return prev.map((item) => {
             if (item.name === grabbedSkill.name) {
@@ -108,6 +109,11 @@ export default function Skills() {
           });
         }
 
+        if (item.name === skill.name) {
+          indexOfGrabbed = index;
+          skill.previousPosition = position;
+        }
+
         return { ...item, previousPosition: position };
       }) as Array<SkillT>;
 
@@ -138,8 +144,9 @@ export default function Skills() {
       <SkillCell
         key={i}
         skill={skills[i]}
-        onGrab={(e: React.MouseEvent) => {
+        onClick={(e: React.MouseEvent) => {
           setGrabbedSkill(skills[i]);
+          setTouchMode(false);
 
           const target = e.target as HTMLElement;
           setCellPosOffset({
@@ -152,7 +159,35 @@ export default function Skills() {
 
           moveSkill(grabbedSkill, i);
         }}
-        grabbedSkill={grabbedSkill}
+        onTap={(e: TouchEvent) => {
+          setTouchMode(true);
+
+          if (grabbedSkill) {
+            if (grabbedSkill.name === skills[i].name) {
+              setGrabbedSkill(null);
+            } else {
+              moveSkill(grabbedSkill, i);
+              setGrabbedSkill(null);
+            }
+          } else {
+            setGrabbedSkill(skills[i]);
+            const target = e.target as HTMLElement;
+            setCellPosOffset({
+              x: e.touches[0].clientX - target.getBoundingClientRect().x,
+              y: e.touches[0].clientY - target.getBoundingClientRect().y,
+            });
+          }
+        }}
+        isHidden={
+          !touchMode &&
+          grabbedSkill !== null &&
+          grabbedSkill.name === skills[i].name
+        }
+        isSelected={
+          touchMode &&
+          grabbedSkill !== null &&
+          grabbedSkill.name === skills[i].name
+        }
       />
     );
   }
@@ -167,15 +202,17 @@ export default function Skills() {
       </div>
 
       {/* Grabbed Skill */}
-      {grabbedSkill && (
+      {grabbedSkill && !touchMode && (
         <div
           className="grabbed-skill"
           style={{
             width: `${cellSize.x - 2}px`,
             height: `${cellSize.y - 2}px`,
-            transform: `translateX(${
-              mousePos.x - cellPosOffset.x
-            }px) translateY(${mousePos.y - cellPosOffset.y}px)`,
+            transform: touchMode
+              ? ""
+              : `translateX(${mousePos.x - cellPosOffset.x}px) translateY(${
+                  mousePos.y - cellPosOffset.y
+                }px)`,
           }}
         >
           <SkillElement skill={grabbedSkill} isGrabbed={true} />
