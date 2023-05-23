@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import SkillElement from "./SkillElement";
 import { SkillT } from "./Skills";
 
@@ -9,6 +9,7 @@ type SkillCellProps = {
   onHover: () => void;
   isHidden: boolean;
   isSelected: boolean;
+  grabAttention: boolean;
 };
 
 export default function SkillCell({
@@ -18,7 +19,9 @@ export default function SkillCell({
   onHover,
   isHidden,
   isSelected,
+  grabAttention,
 }: SkillCellProps) {
+  const [isAttentionGrabberCell] = useState(grabAttention);
   const containerRef = useRef<HTMLDivElement>(null);
 
   let isOffset = false;
@@ -56,7 +59,7 @@ export default function SkillCell({
         onClick(e);
       }}
       onMouseEnter={onHover}
-      className="skill-cell"
+      className={`skill-cell ${grabAttention ? "attention-grabber" : ""}`}
     >
       {/* Rerender is forced when isHidden changes so animation can play */}
       <SkillElement
@@ -66,6 +69,16 @@ export default function SkillCell({
         isSelected={isSelected}
         startingOffset={isOffset ? { x: xOffset, y: yOffset } : undefined}
       />
+
+      {isAttentionGrabberCell && (
+        <div
+          className={`attention-grabber text-h-m ${
+            grabAttention ? "" : "hide"
+          }`}
+        >
+          Move me!
+        </div>
+      )}
     </div>
   );
 }

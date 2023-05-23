@@ -25,6 +25,7 @@ export default function Skills() {
   const [windowSize] = useWindowSize();
   const [mousePos] = useMousePosition();
   const [cellPosOffset, setCellPosOffset] = useState({ x: 0, y: 0 });
+  const [attentionGrabber, setAttentionGrabber] = useState(true);
 
   //useEffects
   useEffect(() => {
@@ -56,6 +57,8 @@ export default function Skills() {
     };
   }, [grabbedSkill, mousePos, cellPosOffset]);
   useEffect(() => {
+    if (grabbedSkill !== null) setAttentionGrabber(false);
+
     //change cursor to 'grabbing' while grabbing a skill
     if (grabbedSkill !== null) {
       document.body.classList.add("grabbing");
@@ -188,6 +191,7 @@ export default function Skills() {
           grabbedSkill !== null &&
           grabbedSkill.name === skills[i].name
         }
+        grabAttention={attentionGrabber && i === 0}
       />
     );
   }

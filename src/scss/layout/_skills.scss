@@ -52,6 +52,56 @@
     border-radius: 0.25rem;
     height: 100%;
 
+    transition: border-color 250ms ease-out;
+    &.attention-grabber {
+      .skill-element span {
+        color: hsl(var(--c-accent-main-low));
+      }
+      .skill-element .blend {
+        background-color: hsl(var(--c-accent-main-low));
+      }
+      border-color: hsl(var(--c-accent-main-low));
+    }
+    position: relative;
+    .attention-grabber {
+      pointer-events: none;
+      position: absolute;
+      top: -3rem;
+      width: 10ch;
+      left: 0;
+      right: 0;
+      margin-inline: auto;
+
+      display: flex;
+      justify-content: center;
+
+      text-align: center;
+      padding: 0.15em;
+      border-radius: 0.3rem;
+
+      font-size: var(--fs-400);
+      background-color: hsl(var(--c-accent-main-low));
+
+      transition: opacity 75ms ease-out;
+      &.hide {
+        opacity: 0;
+      }
+
+      animation-name: bounce;
+      animation-duration: 1000ms;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 100%;
+        border: 0.75rem solid transparent;
+        border-top: 0.75rem solid hsl(var(--c-accent-main-low));
+        transform: scaleX(0.5) translateY(-1px);
+      }
+    }
+
     //hover & grab states
     body:not(.grabbing) & {
       cursor: grab;
@@ -126,5 +176,17 @@
     &.grabbed span {
       color: hsl(var(--c-accent-main-low));
     }
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+  100% {
+    transform: translateY(0);
   }
 }
