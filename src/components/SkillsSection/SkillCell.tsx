@@ -12,6 +12,9 @@ type SkillCellProps = {
   grabAttention: boolean;
 };
 
+const timeThreshold = 400;
+const distanceThreshold = 35;
+
 export default function SkillCell({
   skill,
   onClick,
@@ -23,6 +26,8 @@ export default function SkillCell({
 }: SkillCellProps) {
   const [isAttentionGrabberCell] = useState(grabAttention);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [touchStartTime, setTouchStartTime] = useState(0);
+  const [touchStartPos, setTouchStartPos] = useState({ x: 0, y: 0 });
 
   let isOffset = false;
   let xOffset = 0;
@@ -46,7 +51,23 @@ export default function SkillCell({
         onClick(e);
       }}
       onMouseEnter={onHover}
-      onTouchEnd={onTap}
+      onTouchStart={(e) => {
+        setTouchStartTime(Date.now());
+        setTouchStartPos({ x: e.touches[0].clientX, y: e.touches[0].clientY });
+      }}
+      onTouchEnd={(e: React.TouchEvent) => {
+        const deltaTime = Date.now() - touchStartTime;
+        const deltaPos = Math.abs(
+          e.changedTouches[0].clientX -
+            touchStartPos.x +
+            e.changedTouches[0].clientY -
+            touchStartPos.y
+        );
+
+        if (deltaTime <= timeThreshold && deltaPos <= distanceThreshold) {
+          onTap(e);
+        }
+      }}
       className={`skill-cell ${grabAttention ? "attention-grabber" : ""}`}
     >
       {/* Rerender is forced when isHidden changes so animation can play */}

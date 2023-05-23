@@ -34,6 +34,11 @@ export default function Skills() {
       if (e.pointerType === "touch") return;
       release();
     }
+    function handleTouchEnd(e: TouchEvent) {
+      const target = e.target as HTMLElement;
+      if (target.classList.contains("skill-cell")) return;
+      release();
+    }
     function release() {
       if (grabbedSkill) {
         setSkills((prev) => {
@@ -54,9 +59,11 @@ export default function Skills() {
       setGrabbedSkill(null);
     }
     window.addEventListener("pointerup", handlePointer);
+    window.addEventListener("touchend", handleTouchEnd);
     window.addEventListener("blur", release);
     return () => {
       window.removeEventListener("pointerup", handlePointer);
+      window.removeEventListener("touchend", handleTouchEnd);
       window.removeEventListener("blur", release);
     };
   }, [grabbedSkill, mousePos, cellPosOffset]);
