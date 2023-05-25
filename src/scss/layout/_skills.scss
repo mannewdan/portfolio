@@ -52,7 +52,7 @@
     border-radius: 0.25rem;
     height: 100%;
 
-    transition: border-color 250ms ease-out;
+    transition: border-color 125ms ease-out;
     &.attention-grabber {
       .skill-element span {
         color: hsl(var(--c-accent-main-low));
@@ -62,6 +62,10 @@
       }
       border-color: hsl(var(--c-accent-main-low));
     }
+    &:hover {
+      border-color: hsl(var(--c-accent-main-medium));
+    }
+
     position: relative;
     .attention-grabber {
       pointer-events: none;
@@ -87,7 +91,7 @@
         opacity: 0;
       }
 
-      animation-name: bounce;
+      animation-name: attention-grabber-bounce;
       animation-duration: 1000ms;
       animation-iteration-count: infinite;
       animation-timing-function: ease-in-out;
@@ -179,7 +183,7 @@
   }
 }
 
-@keyframes bounce {
+@keyframes attention-grabber-bounce {
   0% {
     transform: translateY(0);
   }

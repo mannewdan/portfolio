@@ -6,6 +6,7 @@
 
 .hero {
   height: calc(100vh - var(--header-height));
+  min-height: 18rem;
   width: 100%;
   position: relative;
   z-index: 2;
@@ -72,5 +73,32 @@
   & *::selection {
     color: hsl(var(--c-accent-main-low));
     background-color: hsl(var(--c-bg-light));
+  }
+  .icon {
+    position: absolute;
+    width: 3rem;
+    bottom: 1.5rem;
+    left: 0;
+    right: 0;
+    margin-inline: auto;
+    z-index: 5;
+
+    animation-name: header-arrow-bounce;
+    animation-duration: 1500ms;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+}
+
+$width: 0.9;
+@keyframes header-arrow-bounce {
+  0% {
+    transform: scaleX($width) translateY(0);
+  }
+  50% {
+    transform: scaleX($width) translateY(0.5rem);
+  }
+  100% {
+    transform: scaleX($width) translateY(0);
   }
 }

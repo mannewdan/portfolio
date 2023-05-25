@@ -1,4 +1,5 @@
 import Background from "./Background";
+import Icon from "./Icon";
 
 export default function Hero() {
   return (
@@ -14,6 +15,8 @@ export default function Hero() {
           See my work
         </a>
       </div>
+
+      <Icon url="arrow.svg" />
     </section>
   );
 }
