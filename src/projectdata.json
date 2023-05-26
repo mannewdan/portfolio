@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Task Manager App",
+    "live": "https://mannewdantaskmanager.netlify.app/",
+    "repo": "https://github.com/mannewdan/frontend-mentor-challenges/tree/main/kanban-task-management-app",
+    "img": "projects/task-manager.jpg",
+    "featured": true,
+    "description": "A task management app designed by @@ and coded by me.",
+    "descriptionLinkName": "frontendmentor.io",
+    "descriptionLinkUrl": "https://www.frontendmentor.io/challenges/kanban-task-management-web-app-wgQLt-HlbB"
+  },
+  {
+    "name": "Portfolio",
+    "live": "https://mannewdan.netlify.app/",
+    "repo": "https://github.com/mannewdan/portfolio",
+    "img": "projects/portfolio.jpg",
+    "description": "This website, which I am using to showcase by abilities!"
+  },
+  {
+    "name": "Movie App",
+    "live": "https://mannewdanmediaapp.netlify.app/",
+    "repo": "https://github.com/mannewdan/frontend-mentor-challenges/tree/main/entertainment-web-app",
+    "img": "projects/media-app.jpg",
+    "description": "A media app where users can search for movies and TV shows. Designed by @@ and coded by me.",
+    "descriptionLinkName": "frontendmentor.io",
+    "descriptionLinkUrl": "https://www.frontendmentor.io/challenges/entertainment-web-app-J-UhgAW1X"
+  },
+  {
+    "name": "Recipegram",
+    "live": "https://recipegram.netlify.app/",
+    "repo": "https://github.com/mannewdan/recipegram",
+    "img": "projects/recipegram.jpg",
+    "description": "A social media & recipe app which I modeled after Instagram. Recipe data is retrieved using an API."
+  },
+  {
+    "name": "Pathfinding Demo",
+    "live": "https://mannewdanpathfinding.netlify.app/",
+    "repo": "https://github.com/mannewdan/dungeon-sim",
+    "img": "projects/pathfinding.jpg",
+    "description": "An implementation of the A* pathfinding algorithm and tile painting on a small grid."
+  }
+]

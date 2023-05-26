@@ -1,4 +1,5 @@
 @use "./breakpoints" as *;
+@use "./utils" as *;
 
 html {
   scroll-behavior: smooth;
@@ -43,4 +44,13 @@ section {
   position: relative;
   z-index: 2;
   background: hsl(var(--c-bg-dark));
+}
+a {
+  color: hsl(var(--c-text-medium-light));
+  text-decoration: none;
+  @include fadeColor(75ms);
+
+  &:hover {
+    color: hsl(var(--c-accent-main-medium));
+  }
 }

@@ -1,0 +1,49 @@
+@use "../globals/breakpoints" as *;
+
+.projects {
+  margin-top: -1rem;
+
+  h2 {
+    text-align: center;
+    color: hsl(var(--c-accent-main-medium));
+    margin-bottom: 1.5rem;
+
+    @include breakpoint(medium) {
+      font-size: var(--fs-700);
+    }
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+
+    @include breakpoint(small) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .project-element {
+    &.featured {
+      grid-column: 1;
+
+      @include breakpoint(small) {
+        grid-column: 1 / span 2;
+      }
+    }
+    .title {
+      margin-top: 0.5rem;
+      margin-bottom: 0.125rem;
+    }
+    img {
+      border: 1px solid hsl(var(--c-text-medium));
+      border-radius: 0.125rem;
+    }
+    .description {
+      strong {
+        color: hsl(var(--c-accent-main-medium));
+      }
+    }
+    border-radius: 0.25rem;
+  }
+}

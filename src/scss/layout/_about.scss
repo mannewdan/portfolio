@@ -2,7 +2,7 @@
 @use "../globals/utils" as *;
 
 .about {
-  padding-bottom: 2rem;
+  padding-bottom: 3rem;
 
   .grid {
     display: grid;
@@ -76,16 +76,6 @@
 
       text-align: left;
       max-width: unset;
-    }
-
-    a {
-      color: hsl(var(--c-text-medium-light));
-      text-decoration: none;
-      @include fadeColor(75ms);
-
-      &:hover {
-        color: hsl(var(--c-accent-main-medium));
-      }
     }
   }
   .image-container {

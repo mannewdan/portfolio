@@ -2,6 +2,7 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Skills from "./components/SkillsSection/Skills";
+import Projects from "./components/Projects";
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
       <main>
         <About />
         <Skills />
+        <Projects />
 
         <section style={{ height: "100rem" }}>
           <h1 className="text-h-l">Totam eius eos perspiciatis</h1>
