@@ -29,6 +29,7 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
+    position: relative;
 
     &.featured {
       grid-column: 1;
@@ -36,10 +37,19 @@
       @include breakpoint(small) {
         grid-column: 1 / span 2;
       }
+      @include breakpoint(tiny) {
+        .links-container:hover a {
+          transition: transform 250ms ease-out, opacity 250ms ease-out 100ms;
+        }
+      }
     }
     .title {
       margin-top: 1em;
       margin-bottom: 0.5em;
+    }
+    img,
+    .links-container {
+      border-radius: 0.125rem;
     }
     img {
       border: 1px solid hsl(var(--c-text-medium));
@@ -69,11 +79,64 @@
         text-align: center;
         color: hsl(var(--c-text-light));
         background: hsl(var(--c-accent-dark-high));
-        border-radius: 0.25rem;
+        border-radius: 2px;
         border: 1px solid hsl(var(--c-text-medium));
         &:hover {
           background: hsl(var(--c-text-medium));
           border-color: hsl(var(--c-text-light));
+        }
+      }
+
+      @include breakpoint(tiny) {
+        position: absolute;
+        width: 100%;
+        aspect-ratio: 1.5;
+        margin: 0;
+
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        a {
+          pointer-events: none;
+          width: unset;
+          background: transparent;
+          border: none;
+          color: transparent;
+          position: absolute;
+          left: -100vw;
+          transform: translateX(-100%);
+          opacity: 0;
+          transition: transform 55ms ease-out, opacity 55ms ease-out;
+        }
+
+        @include fade(50ms);
+        background-color: transparent;
+        &:hover {
+          @include fade;
+          background-color: hsl(var(--c-bg-dark) / 90%);
+
+          a {
+            pointer-events: all;
+            left: 0;
+            right: 0;
+            width: 20ch;
+            margin-inline: auto;
+            color: hsl(var(--c-text-light));
+            transform: translateX(0);
+            opacity: 1;
+            transition: transform 250ms ease-out, opacity 250ms ease-out 150ms;
+
+            &:nth-child(1) {
+              margin-bottom: 3em;
+              transition: transform 250ms ease-out, opacity 250ms ease-out 150ms;
+            }
+            &:nth-child(2) {
+              margin-top: 3em;
+              transition: transform 250ms ease-out 100ms,
+                opacity 250ms ease-out 250ms;
+            }
+          }
         }
       }
     }
