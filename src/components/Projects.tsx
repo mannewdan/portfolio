@@ -12,6 +12,7 @@ export type ProjectT = {
   descriptionStrong?: string;
   descriptionLinkName?: string;
   descriptionLinkUrl?: string;
+  tags: Array<{ name: string; bold?: boolean }>;
 };
 
 export default function Projects() {

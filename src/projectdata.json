@@ -7,14 +7,16 @@
     "featured": true,
     "description": "A task management app designed by @@ and coded by me.",
     "descriptionLinkName": "frontendmentor.io",
-    "descriptionLinkUrl": "https://www.frontendmentor.io/challenges/kanban-task-management-web-app-wgQLt-HlbB"
+    "descriptionLinkUrl": "https://www.frontendmentor.io/challenges/kanban-task-management-web-app-wgQLt-HlbB",
+    "tags": [{ "name": "react" }, { "name": "sass" }]
   },
   {
     "name": "Portfolio",
     "live": "https://mannewdan.netlify.app/",
     "repo": "https://github.com/mannewdan/portfolio",
     "img": "projects/portfolio.jpg",
-    "description": "This website, which I am using to showcase by abilities!"
+    "description": "This website, which I am using to showcase by abilities!",
+    "tags": [{ "name": "react" }, { "name": "sass" }]
   },
   {
     "name": "Movie App",
@@ -23,20 +25,27 @@
     "img": "projects/media-app.jpg",
     "description": "A media app where users can search for movies and TV shows. Designed by @@ and coded by me.",
     "descriptionLinkName": "frontendmentor.io",
-    "descriptionLinkUrl": "https://www.frontendmentor.io/challenges/entertainment-web-app-J-UhgAW1X"
+    "descriptionLinkUrl": "https://www.frontendmentor.io/challenges/entertainment-web-app-J-UhgAW1X",
+    "tags": [{ "name": "react" }, { "name": "sass" }]
   },
   {
     "name": "Recipegram",
     "live": "https://recipegram.netlify.app/",
     "repo": "https://github.com/mannewdan/recipegram",
     "img": "projects/recipegram.jpg",
-    "description": "A social media & recipe app which I modeled after Instagram. Recipe data is retrieved using an API."
+    "description": "A social media & recipe app which I modeled after Instagram. Recipe data is retrieved using an API.",
+    "tags": [
+      { "name": "react" },
+      { "name": "sass" },
+      { "name": "api", "bold": true }
+    ]
   },
   {
-    "name": "Pathfinding Demo",
+    "name": "Pathfinding",
     "live": "https://mannewdanpathfinding.netlify.app/",
     "repo": "https://github.com/mannewdan/dungeon-sim",
     "img": "projects/pathfinding.jpg",
-    "description": "An implementation of the A* pathfinding algorithm and tile painting on a small grid."
+    "description": "An implementation of the A* pathfinding algorithm and tile painting on a small grid.",
+    "tags": [{ "name": "react" }, { "name": "sass" }]
   }
 ]

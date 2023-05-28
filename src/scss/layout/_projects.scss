@@ -59,9 +59,34 @@
         }
       }
     }
-    .title {
+    .title-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       margin-top: 1em;
       margin-bottom: 0.5em;
+
+      .tags-container {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: center;
+        align-items: center;
+
+        .tag {
+          font-size: var(--fs-200);
+          @include breakpoint(medium) {
+            font-size: var(--fs-300);
+          }
+          color: hsl(var(--c-text-medium));
+          border: 1px solid hsl(var(--c-text-medium));
+          border-radius: 2px;
+          padding: 2px 4px;
+          &.bold {
+            color: hsl(var(--c-accent-main-low));
+            border-color: hsl(var(--c-accent-main-low));
+          }
+        }
+      }
     }
     img,
     .links-container {

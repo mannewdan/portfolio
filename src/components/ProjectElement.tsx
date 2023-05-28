@@ -40,11 +40,19 @@ export default function ProjectElement({ project }: ProjectElementProps) {
         </strong>
       );
   });
+  const tagEls = project.tags.map((item) => {
+    return (
+      <p className={`tag text-h-s ${item.bold ? "bold" : ""}`}>{item.name}</p>
+    );
+  });
 
   return (
     <div className={`project-element ${project.featured ? "featured" : ""}`}>
       <img src={project.img}></img>
-      <p className="title text-h-s">{project.name}</p>
+      <div className="title-container">
+        <p className="title text-h-s">{project.name}</p>
+        <div className="tags-container">{tagEls}</div>
+      </div>
 
       <p className="description c-text-medium">{descriptionEls}</p>
 
