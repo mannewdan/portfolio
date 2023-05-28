@@ -23,9 +23,9 @@ html {
 body {
   font-family: var(--ff-body);
   color: hsl(0 0% 100%);
-  background-color: hsl(0 0% 14%);
   overflow-x: hidden;
   min-width: 100vw;
+  background: hsl(var(--c-bg-dark));
 }
 h1,
 h2,
@@ -43,7 +43,7 @@ h6 {
 section {
   position: relative;
   z-index: 2;
-  background: hsl(var(--c-bg-dark));
+  width: 100%;
 }
 a {
   color: hsl(var(--c-text-medium-light));

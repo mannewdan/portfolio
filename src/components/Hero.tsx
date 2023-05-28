@@ -3,7 +3,7 @@ import Icon from "./Icon";
 
 export default function Hero() {
   return (
-    <section className="hero">
+    <section id="home" className="hero">
       <Background />
       <div className="main-container">
         <h1 className="text-h-l uppercase greeting">Hey! I'm Dan</h1>

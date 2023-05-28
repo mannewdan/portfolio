@@ -5,11 +5,12 @@
 }
 
 .hero {
-  height: calc(100vh - var(--header-height));
+  height: 100vh;
   min-height: 18rem;
   width: 100%;
   position: relative;
   z-index: 2;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
 
   .greeting {
     @include breakpoint(medium) {
@@ -33,12 +34,7 @@
     right: 0;
     margin-left: auto;
     margin-right: auto;
-    margin-top: max(
-      calc((50vh - calc(var(--hero-height) * 0.5) - var(--header-height))),
-      0px
-    );
-
-    height: var(--hero-height);
+    height: 100%;
 
     &::before,
     &::after {

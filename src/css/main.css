@@ -201,9 +201,9 @@ html::-webkit-scrollbar-track {
 body {
   font-family: var(--ff-body);
   color: hsl(0, 0%, 100%);
-  background-color: hsl(0, 0%, 14%);
   overflow-x: hidden;
   min-width: 100vw;
+  background: hsl(var(--c-bg-dark));
 }
 
 h1,
@@ -228,13 +228,13 @@ h6 {
 section {
   position: relative;
   z-index: 2;
-  background: hsl(var(--c-bg-dark));
+  width: 100%;
 }
 
 a {
   color: hsl(var(--c-text-medium-light));
   text-decoration: none;
-  transition: color 75ms ease-out 0ms, background-color 75ms ease-out 0ms;
+  transition: color 75ms ease-out 0ms, background-color 75ms ease-out 0ms, border-color 75ms ease-out 0ms;
 }
 a:hover {
   color: hsl(var(--c-accent-main-medium));
@@ -339,17 +339,17 @@ a:hover {
   color: hsl(var(--c-text-light));
   text-decoration: none;
   position: relative;
-  transition: color 250ms ease-out 0ms, background-color 250ms ease-out 0ms, transform 250ms ease-out 0ms;
+  transition: color 250ms ease-out 0ms, background-color 250ms ease-out 0ms, transform 250ms ease-out 0ms, border-color 250ms ease-out 0ms;
 }
 .header nav a:hover {
   color: hsl(var(--c-text-light));
 }
 .header nav a:hover::after {
-  transition: color 250ms ease-out 0ms, background-color 250ms ease-out 0ms, transform 250ms ease-out 0ms;
+  transition: color 250ms ease-out 0ms, background-color 250ms ease-out 0ms, transform 250ms ease-out 0ms, border-color 250ms ease-out 0ms;
   transform: scaleX(100%);
 }
 .header nav a::after {
-  transition: color 0ms ease-out 75ms, background-color 0ms ease-out 75ms, transform 0ms ease-out 75ms;
+  transition: color 0ms ease-out 75ms, background-color 0ms ease-out 75ms, transform 0ms ease-out 75ms, border-color 0ms ease-out 75ms;
   content: "";
   position: absolute;
   left: -0.5ch;
@@ -373,7 +373,7 @@ a:hover {
   .header nav a {
     font-size: var(--fs-400);
     transform: translateX(0);
-    transition: color 250ms ease-out 0ms, background-color 250ms ease-out 0ms;
+    transition: color 250ms ease-out 0ms, background-color 250ms ease-out 0ms, border-color 250ms ease-out 0ms;
     color: hsl(var(--c-text-light)/50%);
   }
   .header nav a:hover {
@@ -416,11 +416,13 @@ a:hover {
 }
 
 .hero {
-  height: calc(100vh - var(--header-height));
+  height: 100vh;
   min-height: 18rem;
   width: 100%;
   position: relative;
   z-index: 2;
+  -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+          clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
 @media (min-width: 55em) {
   .hero .greeting {
@@ -443,8 +445,7 @@ a:hover {
   right: 0;
   margin-left: auto;
   margin-right: auto;
-  margin-top: max(50vh - var(--hero-height) * 0.5 - var(--header-height), 0px);
-  height: var(--hero-height);
+  height: 100%;
 }
 .hero .main-container::before, .hero .main-container::after {
   content: "";
@@ -767,8 +768,7 @@ a:hover {
   }
 }
 .skills {
-  margin-top: -1rem;
-  padding-bottom: 3rem;
+  padding-bottom: 2rem;
   z-index: 3;
 }
 .skills h2 {
@@ -788,7 +788,7 @@ a:hover {
 .skills > p a {
   color: hsl(var(--c-text-medium-light));
   text-decoration: none;
-  transition: color 75ms ease-out 0ms, background-color 75ms ease-out 0ms;
+  transition: color 75ms ease-out 0ms, background-color 75ms ease-out 0ms, border-color 75ms ease-out 0ms;
 }
 .skills > p a:hover {
   color: hsl(var(--c-accent-main-medium));
@@ -962,7 +962,7 @@ body:not(.grabbing) .skills .skill-cell:hover span {
 }
 
 .projects {
-  margin-top: -1rem;
+  padding-bottom: 3rem;
 }
 .projects h2 {
   text-align: center;
@@ -982,9 +982,13 @@ body:not(.grabbing) .skills .skill-cell:hover span {
 @media (min-width: 40em) {
   .projects .grid {
     grid-template-columns: 1fr 1fr;
+    gap: 1rem;
   }
 }
 .projects .project-element {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
   border-radius: 0.25rem;
 }
 .projects .project-element.featured {
@@ -996,13 +1000,41 @@ body:not(.grabbing) .skills .skill-cell:hover span {
   }
 }
 .projects .project-element .title {
-  margin-top: 0.5rem;
-  margin-bottom: 0.125rem;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
 }
 .projects .project-element img {
   border: 1px solid hsl(var(--c-text-medium));
   border-radius: 0.125rem;
+  aspect-ratio: 1.5;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+.projects .project-element .description {
+  margin-bottom: 0.5em;
 }
 .projects .project-element .description strong {
   color: hsl(var(--c-accent-main-medium));
+}
+.projects .project-element .links-container {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.projects .project-element .links-container a {
+  transition: color 125ms ease-out 0ms, background-color 125ms ease-out 0ms, transform 125ms ease-out 0ms, border-color 125ms ease-out 0ms;
+  margin-top: 0.5em;
+  width: 100%;
+  text-align: center;
+  color: hsl(var(--c-text-light));
+  background: hsl(var(--c-accent-dark-high));
+  border-radius: 0.25rem;
+  border: 1px solid hsl(var(--c-text-medium));
+}
+.projects .project-element .links-container a:hover {
+  background: hsl(var(--c-text-medium));
+  border-color: hsl(var(--c-text-light));
 }/*# sourceMappingURL=main.css.map */

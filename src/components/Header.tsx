@@ -35,7 +35,6 @@ export default function Header() {
           </a>
         </nav>
       </header>
-      <div id="home" className="scroll-destination"></div>
     </>
   );
 }

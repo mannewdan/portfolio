@@ -10,11 +10,12 @@ $content-max-width: 50rem;
 @mixin fade($duration: 250ms, $delay: 0ms) {
   transition: color $duration ease-out $delay,
     background-color $duration ease-out $delay,
-    transform $duration ease-out $delay;
+    transform $duration ease-out $delay, border-color $duration ease-out $delay;
 }
 @mixin fadeColor($duration: 250ms, $delay: 0ms) {
   transition: color $duration ease-out $delay,
-    background-color $duration ease-out $delay;
+    background-color $duration ease-out $delay,
+    border-color $duration ease-out $delay;
 }
 
 .transparent {
