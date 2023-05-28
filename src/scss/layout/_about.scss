@@ -79,7 +79,7 @@
     }
   }
   .image-container {
-    width: 15rem;
+    width: 12rem;
     padding-top: 5rem;
     order: -1;
 
@@ -88,6 +88,9 @@
     justify-content: flex-end;
     justify-self: center;
 
+    @include breakpoint(small) {
+      width: 15rem;
+    }
     @include breakpoint(medium) {
       order: 0;
       justify-self: flex-end;

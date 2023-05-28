@@ -38,12 +38,20 @@
 
     border-radius: 0.5rem;
 
-    --column-count: 3;
-    grid-template-columns: repeat(3, calc((33.333% - ($gap-size * 2 / 3))));
+    --column-count: 2;
+    @include breakpoint(tiny) {
+      --column-count: 3;
+    }
     @include breakpoint(small) {
       --column-count: 4;
-      grid-template-columns: repeat(4, calc(25% - ($gap-size * 3 / 4)));
     }
+    grid-template-columns: repeat(
+      var(--column-count),
+      calc(
+        (100% / var(--column-count)) -
+          ($gap-size * (var(--column-count) - 1) / var(--column-count))
+      )
+    );
   }
 
   //SkillCell
@@ -71,7 +79,7 @@
     .attention-grabber {
       pointer-events: none;
       position: absolute;
-      top: -3rem;
+      top: -3.25em;
       width: 10ch;
       left: 0;
       right: 0;
@@ -84,7 +92,10 @@
       padding: 0.15em;
       border-radius: 0.3rem;
 
-      font-size: var(--fs-400);
+      font-size: var(--fs-300);
+      @include breakpoint(small) {
+        font-size: var(--fs-400);
+      }
       background-color: hsl(var(--c-accent-main-low));
 
       transition: opacity 75ms ease-out;

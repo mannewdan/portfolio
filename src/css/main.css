@@ -93,36 +93,51 @@ h6 {
 :root {
   --ff-body: "Rubik", sans-serif;
   --ff-header: "Jost", sans-serif;
-  --fs-300: 0.75rem;
+  --fs-300: 0.8rem;
   --fs-400: 1rem;
   --fs-500: 1.25rem;
   --fs-600: 1.75rem;
   --fs-700: 2.25rem;
   --fs-800: 3rem;
-  --fs-900: 4rem;
+  --fs-900: 3.5rem;
 }
 
 .text-h-l {
   font-family: var(--ff-header);
-  font-size: var(--fs-800);
+  font-size: var(--fs-700);
   font-weight: 700;
   line-height: 1.25;
+}
+@media (min-width: 26.625em) {
+  .text-h-l {
+    font-size: var(--fs-800);
+  }
 }
 
 .text-h-m {
   font-family: var(--ff-header);
-  font-size: var(--fs-600);
+  font-size: var(--fs-500);
   font-weight: 700;
   line-height: 1.25;
+}
+@media (min-width: 26.625em) {
+  .text-h-m {
+    font-size: var(--fs-600);
+  }
 }
 
 .text-h-s {
   font-family: var(--ff-header);
-  font-size: var(--fs-400);
+  font-size: var(--fs-300);
   font-weight: 700;
   line-height: 1.25;
   letter-spacing: 2px;
   text-transform: uppercase;
+}
+@media (min-width: 26.625em) {
+  .text-h-s {
+    font-size: var(--fs-400);
+  }
 }
 
 .text-b-m {
@@ -444,7 +459,7 @@ a:hover {
   bottom: 0;
 }
 .hero .main-container a {
-  margin-top: 1rem;
+  margin-top: 0.5em;
   color: hsl(var(--c-text-dark));
   background: hsl(var(--c-bg-light));
   text-decoration: none;
@@ -568,7 +583,7 @@ a:hover {
   }
 }
 .about .image-container {
-  width: 15rem;
+  width: 12rem;
   padding-top: 5rem;
   order: -1;
   display: flex;
@@ -579,6 +594,11 @@ a:hover {
   border-bottom-right-radius: 0.25rem;
   position: relative;
   z-index: 1;
+}
+@media (min-width: 40em) {
+  .about .image-container {
+    width: 15rem;
+  }
 }
 @media (min-width: 55em) {
   .about .image-container {
@@ -777,13 +797,17 @@ a:hover {
   display: grid;
   gap: 1rem;
   border-radius: 0.5rem;
-  --column-count: 3;
-  grid-template-columns: repeat(3, calc(33.333% - 0.6666666667rem));
+  --column-count: 2;
+  grid-template-columns: repeat(var(--column-count), calc(100% / var(--column-count) - 1rem * (var(--column-count) - 1) / var(--column-count)));
+}
+@media (min-width: 26.625em) {
+  .skills .grid {
+    --column-count: 3;
+  }
 }
 @media (min-width: 40em) {
   .skills .grid {
     --column-count: 4;
-    grid-template-columns: repeat(4, calc(25% - 0.75rem));
   }
 }
 .skills .skill-cell {
@@ -809,7 +833,7 @@ a:hover {
 .skills .skill-cell .attention-grabber {
   pointer-events: none;
   position: absolute;
-  top: -3rem;
+  top: -3.25em;
   width: 10ch;
   left: 0;
   right: 0;
@@ -819,13 +843,18 @@ a:hover {
   text-align: center;
   padding: 0.15em;
   border-radius: 0.3rem;
-  font-size: var(--fs-400);
+  font-size: var(--fs-300);
   background-color: hsl(var(--c-accent-main-low));
   transition: opacity 75ms ease-out;
   animation-name: attention-grabber-bounce;
   animation-duration: 1000ms;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
+}
+@media (min-width: 40em) {
+  .skills .skill-cell .attention-grabber {
+    font-size: var(--fs-400);
+  }
 }
 .skills .skill-cell .attention-grabber.hide {
   opacity: 0;
