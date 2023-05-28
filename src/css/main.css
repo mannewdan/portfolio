@@ -990,7 +990,25 @@ body:not(.grabbing) .skills .skill-cell:hover span {
   flex-direction: column;
   margin-bottom: 1rem;
   position: relative;
-  border-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid hsl(var(--c-text-medium));
+}
+.projects .project-element:last-of-type {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+@media (min-width: 26.625em) {
+  .projects .project-element {
+    padding-bottom: 0.5rem;
+  }
+}
+@media (min-width: 40em) {
+  .projects .project-element {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
 }
 .projects .project-element.featured {
   grid-column: 1;
@@ -1031,22 +1049,18 @@ body:not(.grabbing) .skills .skill-cell:hover span {
 .projects .project-element .links-container {
   margin-top: auto;
   display: flex;
-  justify-content: space-between;
   gap: 1rem;
 }
 .projects .project-element .links-container a {
   transition: color 125ms ease-out 0ms, background-color 125ms ease-out 0ms, transform 125ms ease-out 0ms, border-color 125ms ease-out 0ms;
   margin-top: 0.5em;
-  width: 100%;
   text-align: center;
   color: hsl(var(--c-text-light));
-  background: hsl(var(--c-accent-dark-high));
-  border-radius: 2px;
-  border: 1px solid hsl(var(--c-text-medium));
+  padding-bottom: 2px;
+  border-bottom: 3px solid hsl(var(--c-accent-main-medium));
 }
 .projects .project-element .links-container a:hover {
-  background: hsl(var(--c-text-medium));
-  border-color: hsl(var(--c-text-light));
+  color: hsl(var(--c-accent-main-medium));
 }
 @media (min-width: 26.625em) {
   .projects .project-element .links-container {
@@ -1057,15 +1071,15 @@ body:not(.grabbing) .skills .skill-cell:hover span {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: color 50ms ease-out 0ms, background-color 50ms ease-out 0ms, transform 50ms ease-out 0ms, border-color 50ms ease-out 0ms;
+    transition: color 125ms ease-out 0ms, background-color 125ms ease-out 0ms, transform 125ms ease-out 0ms, border-color 125ms ease-out 0ms;
     background-color: transparent;
   }
   .projects .project-element .links-container a {
     pointer-events: none;
     width: unset;
     background: transparent;
-    border: none;
     color: transparent;
+    color: hsl(var(--c-text-light));
     position: absolute;
     left: -100vw;
     transform: translateX(-100%);
@@ -1074,25 +1088,23 @@ body:not(.grabbing) .skills .skill-cell:hover span {
   }
   .projects .project-element .links-container:hover {
     transition: color 250ms ease-out 0ms, background-color 250ms ease-out 0ms, transform 250ms ease-out 0ms, border-color 250ms ease-out 0ms;
-    background-color: hsl(var(--c-bg-dark)/90%);
+    background-color: hsl(var(--c-bg-dark)/85%);
   }
   .projects .project-element .links-container:hover a {
     pointer-events: all;
     left: 0;
     right: 0;
-    width: 20ch;
+    width: 8ch;
     margin-inline: auto;
-    color: hsl(var(--c-text-light));
     transform: translateX(0);
     opacity: 1;
-    transition: transform 250ms ease-out, opacity 250ms ease-out 150ms;
   }
   .projects .project-element .links-container:hover a:nth-child(1) {
     margin-bottom: 3em;
-    transition: transform 250ms ease-out, opacity 250ms ease-out 150ms;
+    transition: transform 250ms ease-out, opacity 250ms ease-out 150ms, color 75ms ease-out;
   }
   .projects .project-element .links-container:hover a:nth-child(2) {
     margin-top: 3em;
-    transition: transform 250ms ease-out 100ms, opacity 250ms ease-out 250ms;
+    transition: transform 250ms ease-out 100ms, opacity 250ms ease-out 250ms, color 75ms ease-out;
   }
 }/*# sourceMappingURL=main.css.map */

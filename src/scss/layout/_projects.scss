@@ -31,6 +31,22 @@
     margin-bottom: 1rem;
     position: relative;
 
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid hsl(var(--c-text-medium));
+    &:last-of-type {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    @include breakpoint(tiny) {
+      padding-bottom: 0.5rem;
+    }
+    @include breakpoint(small) {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
     &.featured {
       grid-column: 1;
 
@@ -64,26 +80,21 @@
         color: hsl(var(--c-accent-main-medium));
       }
     }
-    border-radius: 0.25rem;
 
     .links-container {
       margin-top: auto;
       display: flex;
-      justify-content: space-between;
       gap: 1rem;
       a {
         @include fade(125ms);
 
         margin-top: 0.5em;
-        width: 100%;
         text-align: center;
         color: hsl(var(--c-text-light));
-        background: hsl(var(--c-accent-dark-high));
-        border-radius: 2px;
-        border: 1px solid hsl(var(--c-text-medium));
+        padding-bottom: 2px;
+        border-bottom: 3px solid hsl(var(--c-accent-main-medium));
         &:hover {
-          background: hsl(var(--c-text-medium));
-          border-color: hsl(var(--c-text-light));
+          color: hsl(var(--c-accent-main-medium));
         }
       }
 
@@ -101,8 +112,8 @@
           pointer-events: none;
           width: unset;
           background: transparent;
-          border: none;
           color: transparent;
+          color: hsl(var(--c-text-light));
           position: absolute;
           left: -100vw;
           transform: translateX(-100%);
@@ -110,31 +121,30 @@
           transition: transform 55ms ease-out, opacity 55ms ease-out;
         }
 
-        @include fade(50ms);
+        @include fade(125ms);
         background-color: transparent;
         &:hover {
           @include fade;
-          background-color: hsl(var(--c-bg-dark) / 90%);
+          background-color: hsl(var(--c-bg-dark) / 85%);
 
           a {
             pointer-events: all;
             left: 0;
             right: 0;
-            width: 20ch;
+            width: 8ch;
             margin-inline: auto;
-            color: hsl(var(--c-text-light));
             transform: translateX(0);
             opacity: 1;
-            transition: transform 250ms ease-out, opacity 250ms ease-out 150ms;
 
             &:nth-child(1) {
               margin-bottom: 3em;
-              transition: transform 250ms ease-out, opacity 250ms ease-out 150ms;
+              transition: transform 250ms ease-out, opacity 250ms ease-out 150ms,
+                color 75ms ease-out;
             }
             &:nth-child(2) {
               margin-top: 3em;
               transition: transform 250ms ease-out 100ms,
-                opacity 250ms ease-out 250ms;
+                opacity 250ms ease-out 250ms, color 75ms ease-out;
             }
           }
         }

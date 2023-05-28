@@ -50,7 +50,7 @@ export default function ProjectElement({ project }: ProjectElementProps) {
 
       <div className="links-container">
         <a target="_blank" href={project.live}>
-          View Project
+          View Live
         </a>
         <a target="_blank" href={project.repo}>
           View Code
