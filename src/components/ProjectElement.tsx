@@ -42,7 +42,9 @@ export default function ProjectElement({ project }: ProjectElementProps) {
   });
   const tagEls = project.tags.map((item) => {
     return (
-      <p className={`tag text-h-s ${item.bold ? "bold" : ""}`}>{item.name}</p>
+      <p key={item.name} className={`tag text-h-s ${item.bold ? "bold" : ""}`}>
+        {item.name}
+      </p>
     );
   });
 

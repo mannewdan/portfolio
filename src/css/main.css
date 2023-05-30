@@ -1133,4 +1133,38 @@ body:not(.grabbing) .skills .skill-cell:hover span {
     margin-top: 3em;
     transition: transform 250ms ease-out 100ms, opacity 250ms ease-out 250ms, color 75ms ease-out;
   }
+}
+
+.gamedev {
+  padding-bottom: 3rem;
+  text-align: center;
+}
+.gamedev h2 {
+  color: hsl(var(--c-accent-main-medium));
+}
+@media (min-width: 55em) {
+  .gamedev h2 {
+    font-size: var(--fs-700);
+  }
+}
+.gamedev .description {
+  margin-bottom: 0.5rem;
+}
+.gamedev .grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+}
+@media (min-width: 40em) {
+  .gamedev .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.gamedev video {
+  aspect-ratio: 1.5;
+  -o-object-fit: cover;
+     object-fit: cover;
+  cursor: pointer;
+  background: black;
+  border-radius: 0.125rem;
 }/*# sourceMappingURL=main.css.map */
