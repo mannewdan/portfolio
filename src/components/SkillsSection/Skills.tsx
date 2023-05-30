@@ -207,8 +207,8 @@ export default function Skills() {
     );
   }
   return (
-    <section className="skills">
-      <h2 className="text-h-m">Skills</h2>
+    <section className="skills alt">
+      <h2 className="text-h-m section-title">Skills</h2>
 
       <div className="padded-container">
         <div ref={containerRef} className="grid">

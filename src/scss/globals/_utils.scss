@@ -36,3 +36,8 @@ $content-max-width: 50rem;
 .grabbing {
   cursor: grabbing;
 }
+section.alt {
+  background-color: hsl(var(--c-bg-medium));
+  border-top: 1px solid hsl(var(--c-text-medium));
+  border-bottom: 1px solid hsl(var(--c-text-medium));
+}

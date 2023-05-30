@@ -57,7 +57,7 @@ h6 {
 
 :root {
   --c-bg-light: 0 0% 98%;
-  --c-bg-medium: 0 0% 59%;
+  --c-bg-medium: 237 17% 21%;
   --c-bg-dark: 237 10% 16%;
   --c-text-dark: 209 48% 24%;
   --c-text-medium: 209 12% 50%;
@@ -184,6 +184,12 @@ h6 {
   cursor: grabbing;
 }
 
+section.alt {
+  background-color: hsl(var(--c-bg-medium));
+  border-top: 1px solid hsl(var(--c-text-medium));
+  border-bottom: 1px solid hsl(var(--c-text-medium));
+}
+
 html {
   scroll-behavior: smooth;
   scrollbar-color: hsl(var(--c-accent-main-high)) hsl(var(--c-accent-dark-low));
@@ -196,7 +202,8 @@ html::-webkit-scrollbar-thumb {
   background: linear-gradient(86deg, hsl(var(--c-accent-main-high)), hsl(var(--c-accent-main-low)));
 }
 html::-webkit-scrollbar-track {
-  background: hsl(var(--c-accent-dark-low));
+  border-left: 1px solid hsl(var(--c-text-medium)/25%);
+  background: hsl(var(--c-bg-dark));
 }
 
 body {
@@ -507,7 +514,7 @@ a:hover {
   }
 }
 .about {
-  padding-bottom: 3rem;
+  padding-bottom: 4rem;
 }
 .about .grid {
   display: grid;
@@ -769,18 +776,8 @@ a:hover {
   }
 }
 .skills {
-  padding-bottom: 2rem;
-  z-index: 3;
-}
-.skills h2 {
-  text-align: center;
-  color: hsl(var(--c-accent-main-medium));
-  margin-bottom: 1.5rem;
-}
-@media (min-width: 55em) {
-  .skills h2 {
-    font-size: var(--fs-700);
-  }
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 .skills > p {
   margin-top: 1rem;
@@ -813,6 +810,7 @@ a:hover {
 }
 .skills .skill-cell {
   border: 2px dashed hsl(var(--c-text-medium));
+  background-color: hsl(var(--c-bg-dark)/25%);
   padding: 1px;
   border-radius: 0.25rem;
   height: 100%;
@@ -899,7 +897,7 @@ body:not(.grabbing) .skills .skill-cell:hover span {
   gap: 1rem;
   padding: 1rem;
   color: hsl(var(--c-text-medium-light));
-  background-color: hsl(var(--c-accent-dark-high));
+  background-color: hsl(var(--c-bg-dark));
   border-radius: 0.25rem;
   pointer-events: none;
   touch-action: none;
@@ -966,14 +964,7 @@ body:not(.grabbing) .skills .skill-cell:hover span {
   padding-bottom: 3rem;
 }
 .projects h2 {
-  text-align: center;
-  color: hsl(var(--c-accent-main-medium));
-  margin-bottom: 1.5rem;
-}
-@media (min-width: 55em) {
-  .projects h2 {
-    font-size: var(--fs-700);
-  }
+  margin-top: 1rem;
 }
 .projects .grid {
   display: grid;
@@ -1136,16 +1127,12 @@ body:not(.grabbing) .skills .skill-cell:hover span {
 }
 
 .gamedev {
+  padding-top: 3rem;
   padding-bottom: 3rem;
   text-align: center;
 }
 .gamedev h2 {
-  color: hsl(var(--c-accent-main-medium));
-}
-@media (min-width: 55em) {
-  .gamedev h2 {
-    font-size: var(--fs-700);
-  }
+  margin-bottom: 1.5rem;
 }
 .gamedev .description {
   margin-bottom: 0.5rem;
@@ -1167,4 +1154,30 @@ body:not(.grabbing) .skills .skill-cell:hover span {
   cursor: pointer;
   background: black;
   border-radius: 0.125rem;
+}
+
+.section-title {
+  position: relative;
+  color: hsl(var(--c-accent-main-medium));
+  color: hsl(var(--c-text-light));
+  text-align: center;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1rem;
+}
+@media (min-width: 55em) {
+  .section-title {
+    font-size: var(--fs-700);
+  }
+}
+.section-title::after {
+  content: "";
+  position: absolute;
+  background-color: hsl(var(--c-accent-main-medium));
+  width: 2ch;
+  height: 0.35rem;
+  border-radius: 10ch;
+  left: 0;
+  right: 0;
+  top: 100%;
+  margin-inline: auto;
 }/*# sourceMappingURL=main.css.map */

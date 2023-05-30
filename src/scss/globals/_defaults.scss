@@ -17,7 +17,8 @@ html {
     );
   }
   &::-webkit-scrollbar-track {
-    background: hsl(var(--c-accent-dark-low));
+    border-left: 1px solid hsl(var(--c-text-medium) / 25%);
+    background: hsl(var(--c-bg-dark));
   }
 }
 body {

@@ -1,15 +1,12 @@
 @use "../globals/breakpoints" as *;
 
 .gamedev {
+  padding-top: 3rem;
   padding-bottom: 3rem;
   text-align: center;
 
   h2 {
-    color: hsl(var(--c-accent-main-medium));
-
-    @include breakpoint(medium) {
-      font-size: var(--fs-700);
-    }
+    margin-bottom: 1.5rem;
   }
   .description {
     margin-bottom: 0.5rem;
