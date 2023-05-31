@@ -56,7 +56,7 @@ export default function ProjectElement({ project }: ProjectElementProps) {
         <div className="tags-container">{tagEls}</div>
       </div>
 
-      <p className="description c-text-medium">{descriptionEls}</p>
+      <p className="description c-text-75">{descriptionEls}</p>
 
       <div className="links-container">
         <a target="_blank" href={project.live}>

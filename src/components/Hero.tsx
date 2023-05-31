@@ -6,7 +6,9 @@ export default function Hero() {
     <section id="home" className="hero">
       <Background />
       <div className="main-container">
-        <h1 className="text-h-l uppercase greeting">Hey! I'm Dan</h1>
+        <h1 className="text-h-l uppercase greeting c-text-light">
+          Hey! I'm Dan
+        </h1>
         <p className="text-h-m c-text-light-75 uppercase title">
           Frontend Developer
         </p>

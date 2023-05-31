@@ -3,7 +3,7 @@
 
 html {
   scroll-behavior: smooth;
-  scrollbar-color: hsl(var(--c-accent-main-high)) hsl(var(--c-accent-dark-low));
+  scrollbar-color: hsl(var(--c-accent-medium)) hsl(var(--c-accent-dark));
 
   &::-webkit-scrollbar {
     width: 10px;
@@ -12,21 +12,20 @@ html {
   &::-webkit-scrollbar-thumb {
     background: linear-gradient(
       86deg,
-      hsl(var(--c-accent-main-high)),
-      hsl(var(--c-accent-main-low))
+      hsl(var(--c-accent-light)),
+      hsl(var(--c-accent-medium))
     );
   }
   &::-webkit-scrollbar-track {
-    border-left: 1px solid hsl(var(--c-text-medium) / 25%);
-    background: hsl(var(--c-bg-dark));
+    background: hsl(var(--c-accent-dark));
   }
 }
 body {
   font-family: var(--ff-body);
-  color: hsl(0 0% 100%);
+  color: hsl(var(--c-text-main));
   overflow-x: hidden;
   min-width: 100vw;
-  background: hsl(var(--c-bg-dark));
+  background: hsl(var(--c-bg-main-light));
 }
 h1,
 h2,
@@ -38,7 +37,7 @@ h6 {
 }
 *::selection {
   color: hsl(var(--c-text-light));
-  background-color: hsl(var(--c-accent-main-medium));
+  background-color: hsl(var(--c-accent-medium));
 }
 
 section {
@@ -47,11 +46,12 @@ section {
   width: 100%;
 }
 a {
-  color: hsl(var(--c-text-medium-light));
+  color: hsl(var(--c-accent-medium));
+  font-weight: 700;
   text-decoration: none;
-  @include fadeColor(75ms);
+  @include fadeColor(50ms);
 
   &:hover {
-    color: hsl(var(--c-accent-main-medium));
+    color: hsl(var(--c-accent-bright));
   }
 }

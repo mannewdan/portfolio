@@ -56,30 +56,21 @@ h6 {
 }
 
 :root {
-  --c-bg-light: 0 0% 98%;
-  --c-bg-medium: 237 17% 21%;
-  --c-bg-dark: 237 10% 16%;
-  --c-text-dark: 209 48% 24%;
-  --c-text-medium: 209 12% 50%;
-  --c-text-medium-light: 209 12% 75%;
+  --c-bg-main: 220 40% 95%;
+  --c-bg-main-light: 190 52% 98%;
+  --c-border-main: 203 20% 80%;
+  --c-accent-light: 182 43% 76%;
+  --c-accent-medium: 203 55% 42%;
+  --c-accent-dark: 215 50% 18%;
+  --c-accent-bright: 355 90% 65%;
+  --c-accent-neutral: 209 20% 70%;
+  --c-accent-neutral-light: 209 20% 82%;
+  --c-text-main: 215 50% 18%;
   --c-text-light: 0 0% 100%;
-  --c-accent-main-high: 20 100% 72%;
-  --c-accent-main-medium: 10 100% 72%;
-  --c-accent-main-low: 353 100% 62%;
-  --c-accent-dark-high: 237 20% 22%;
-  --c-accent-dark-low: 237 17% 21%;
 }
 
 .c-text-light {
   color: hsl(var(--c-text-light));
-}
-
-.c-text-medium {
-  color: hsl(var(--c-text-medium));
-}
-
-.c-text-dark {
-  color: hsl(var(--c-text-dark));
 }
 
 .c-text-light-75 {
@@ -88,6 +79,14 @@ h6 {
 
 .c-text-light-50 {
   color: hsl(var(--c-text-light)/50%);
+}
+
+.c-text-75 {
+  color: hsl(var(--c-text-main)/75%);
+}
+
+.c-text-50 {
+  color: hsl(var(--c-text-main)/50%);
 }
 
 :root {
@@ -185,33 +184,32 @@ h6 {
 }
 
 section.alt {
-  background-color: hsl(var(--c-bg-medium));
-  border-top: 1px solid hsl(var(--c-text-medium));
-  border-bottom: 1px solid hsl(var(--c-text-medium));
+  background-color: hsl(var(--c-bg-main));
+  border-top: 1px solid hsl(var(--c-border-main));
+  border-bottom: 1px solid hsl(var(--c-border-main));
 }
 
 html {
   scroll-behavior: smooth;
-  scrollbar-color: hsl(var(--c-accent-main-high)) hsl(var(--c-accent-dark-low));
+  scrollbar-color: hsl(var(--c-accent-medium)) hsl(var(--c-accent-dark));
 }
 html::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
 html::-webkit-scrollbar-thumb {
-  background: linear-gradient(86deg, hsl(var(--c-accent-main-high)), hsl(var(--c-accent-main-low)));
+  background: linear-gradient(86deg, hsl(var(--c-accent-light)), hsl(var(--c-accent-medium)));
 }
 html::-webkit-scrollbar-track {
-  border-left: 1px solid hsl(var(--c-text-medium)/25%);
-  background: hsl(var(--c-bg-dark));
+  background: hsl(var(--c-accent-dark));
 }
 
 body {
   font-family: var(--ff-body);
-  color: hsl(0, 0%, 100%);
+  color: hsl(var(--c-text-main));
   overflow-x: hidden;
   min-width: 100vw;
-  background: hsl(var(--c-bg-dark));
+  background: hsl(var(--c-bg-main-light));
 }
 
 h1,
@@ -225,12 +223,12 @@ h6 {
 
 *::-moz-selection {
   color: hsl(var(--c-text-light));
-  background-color: hsl(var(--c-accent-main-medium));
+  background-color: hsl(var(--c-accent-medium));
 }
 
 *::selection {
   color: hsl(var(--c-text-light));
-  background-color: hsl(var(--c-accent-main-medium));
+  background-color: hsl(var(--c-accent-medium));
 }
 
 section {
@@ -240,12 +238,13 @@ section {
 }
 
 a {
-  color: hsl(var(--c-text-medium-light));
+  color: hsl(var(--c-accent-medium));
+  font-weight: 700;
   text-decoration: none;
-  transition: color 75ms ease-out 0ms, background-color 75ms ease-out 0ms, border-color 75ms ease-out 0ms;
+  transition: color 50ms ease-out 0ms, background-color 50ms ease-out 0ms, border-color 50ms ease-out 0ms;
 }
 a:hover {
-  color: hsl(var(--c-accent-main-medium));
+  color: hsl(var(--c-accent-bright));
 }
 
 :root {
@@ -296,7 +295,7 @@ a:hover {
   height: 0.15rem;
   border-radius: 1rem;
   border: none;
-  background-color: hsl(var(--c-bg-light));
+  background-color: hsl(var(--c-bg-main-light));
   transition: transform 175ms ease-out background-color 175ms ease-out;
 }
 .header .nav-dropdown-button button::before, .header .nav-dropdown-button button::after {
@@ -307,7 +306,7 @@ a:hover {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: hsl(var(--c-bg-light));
+  background-color: hsl(var(--c-bg-main-light));
   transition: transform 175ms ease-out;
 }
 .header .nav-dropdown-button button::before {
@@ -317,7 +316,7 @@ a:hover {
   transform: translateY(0.5rem);
 }
 .header .nav-dropdown-button.active button {
-  background-color: hsl(var(--c-bg-light)/0%);
+  background-color: hsl(var(--c-bg-main-light)/0%);
   transform: rotate(45deg);
 }
 .header .nav-dropdown-button.active button::before {
@@ -338,7 +337,7 @@ a:hover {
   width: 100%;
   height: 100vh;
   gap: 1.5rem;
-  background-color: hsl(var(--c-bg-dark)/90%);
+  background-color: hsl(var(--c-accent-dark)/90%);
   transform: translateY(-100%);
 }
 .header nav a {
@@ -411,12 +410,12 @@ a:hover {
   transition-delay: 575ms;
 }
 .header *::-moz-selection {
-  color: hsl(var(--c-accent-main-low));
-  background-color: hsl(var(--c-bg-light));
+  color: hsl(var(--c-accent-medium));
+  background-color: hsl(var(--c-bg-main-light));
 }
 .header *::selection {
-  color: hsl(var(--c-accent-main-low));
-  background-color: hsl(var(--c-bg-light));
+  color: hsl(var(--c-accent-medium));
+  background-color: hsl(var(--c-bg-main-light));
 }
 
 :root {
@@ -469,8 +468,8 @@ a:hover {
 }
 .hero .main-container a {
   margin-top: 0.5em;
-  color: hsl(var(--c-text-dark));
-  background: hsl(var(--c-bg-light));
+  color: hsl(var(--c-text-main));
+  background: hsl(var(--c-bg-main-light));
   text-decoration: none;
   padding: 0.6rem 1rem 0.5rem 1rem;
   border-radius: 0.25rem;
@@ -481,12 +480,12 @@ a:hover {
   transform: translateY(-0.1rem);
 }
 .hero *::-moz-selection {
-  color: hsl(var(--c-accent-main-low));
-  background-color: hsl(var(--c-bg-light));
+  color: hsl(var(--c-accent-medium));
+  background-color: hsl(var(--c-bg-main-light));
 }
 .hero *::selection {
-  color: hsl(var(--c-accent-main-low));
-  background-color: hsl(var(--c-bg-light));
+  color: hsl(var(--c-accent-medium));
+  background-color: hsl(var(--c-bg-main-light));
 }
 .hero .icon {
   position: absolute;
@@ -560,10 +559,10 @@ a:hover {
   }
 }
 .about .name {
-  color: hsl(var(--c-text-light));
+  color: hsl(var(--c-accent-dark));
 }
 .about .title {
-  color: hsl(var(--c-accent-main-medium));
+  color: hsl(var(--c-accent-medium));
   margin-bottom: 0.5rem;
 }
 .about .description {
@@ -577,8 +576,8 @@ a:hover {
   text-align: center;
   max-width: 40ch;
   margin-inline: auto;
-  border-top: 2px solid hsl(var(--c-text-medium)/25%);
-  border-bottom: 2px solid hsl(var(--c-text-medium)/25%);
+  border-top: 1px solid hsl(var(--c-border-main));
+  border-bottom: 1px solid hsl(var(--c-border-main));
 }
 @media (min-width: 55em) {
   .about .history {
@@ -624,7 +623,7 @@ a:hover {
 .about .image-container .background {
   width: 100%;
   height: 100%;
-  background: hsl(var(--c-bg-medium)/7%);
+  background: hsl(var(--c-accent-dark)/50%);
   position: absolute;
   z-index: 1;
 }
@@ -645,7 +644,7 @@ a:hover {
 }
 .about .image-container .small-circle {
   width: 50%;
-  border: 12px solid hsl(var(--c-text-medium)/15%);
+  border: 12px solid hsl(var(--c-accent-medium)/25%);
   transform: translateX(-50%);
   -webkit-clip-path: polygon(50% 0%, 50% 100%, 0% 100%, 0% 0%);
           clip-path: polygon(50% 0%, 50% 100%, 0% 100%, 0% 0%);
@@ -659,7 +658,7 @@ a:hover {
 }
 .about .image-container .large-circle {
   width: 100%;
-  border: 4px solid hsl(var(--c-text-medium-light)/15%);
+  border: 4px solid hsl(var(--c-accent-light)/40%);
   transform: translateX(50%);
   right: 0;
   top: 25%;
@@ -686,7 +685,7 @@ a:hover {
 }
 
 .background-animation {
-  background: linear-gradient(135deg, hsl(var(--c-accent-main-high)), hsl(var(--c-accent-main-low)));
+  background: linear-gradient(135deg, hsl(var(--c-accent-light)), hsl(var(--c-accent-medium)));
   background-attachment: fixed;
   background-size: 100% max(100vh, 20rem);
   pointer-events: none;
@@ -715,7 +714,7 @@ a:hover {
   height: var(--shape-size);
   border-radius: 50%;
   opacity: 50%;
-  background: linear-gradient(135deg, hsl(var(--c-accent-main-high)), hsl(var(--c-accent-main-low)));
+  background: linear-gradient(135deg, hsl(var(--c-accent-light)), hsl(var(--c-accent-medium)));
   background-attachment: fixed;
   background-size: 100% 100%;
   animation-duration: 100000ms;
@@ -783,14 +782,6 @@ a:hover {
   margin-top: 1rem;
   text-align: center;
 }
-.skills > p a {
-  color: hsl(var(--c-text-medium-light));
-  text-decoration: none;
-  transition: color 75ms ease-out 0ms, background-color 75ms ease-out 0ms, border-color 75ms ease-out 0ms;
-}
-.skills > p a:hover {
-  color: hsl(var(--c-accent-main-medium));
-}
 .skills .grid {
   display: grid;
   gap: 1rem;
@@ -809,8 +800,7 @@ a:hover {
   }
 }
 .skills .skill-cell {
-  border: 2px dashed hsl(var(--c-text-medium));
-  background-color: hsl(var(--c-bg-dark)/25%);
+  border: 2px dashed hsl(var(--c-accent-neutral));
   padding: 1px;
   border-radius: 0.25rem;
   height: 100%;
@@ -818,16 +808,16 @@ a:hover {
   position: relative;
 }
 .skills .skill-cell.attention-grabber {
-  border-color: hsl(var(--c-accent-main-low));
+  border-color: hsl(var(--c-accent-bright));
 }
 .skills .skill-cell.attention-grabber .skill-element span {
-  color: hsl(var(--c-accent-main-low));
+  color: hsl(var(--c-accent-bright));
 }
 .skills .skill-cell.attention-grabber .skill-element .blend {
-  background-color: hsl(var(--c-accent-main-low));
+  background-color: hsl(var(--c-accent-bright));
 }
 .skills .skill-cell:hover {
-  border-color: hsl(var(--c-accent-main-medium));
+  border-color: hsl(var(--c-accent-medium));
 }
 .skills .skill-cell .attention-grabber {
   pointer-events: none;
@@ -843,7 +833,8 @@ a:hover {
   padding: 0.15em;
   border-radius: 0.3rem;
   font-size: var(--fs-300);
-  background-color: hsl(var(--c-accent-main-low));
+  color: hsl(var(--c-text-light));
+  background-color: hsl(var(--c-accent-bright));
   transition: opacity 75ms ease-out;
   animation-name: attention-grabber-bounce;
   animation-duration: 1000ms;
@@ -863,17 +854,17 @@ a:hover {
   position: absolute;
   top: 100%;
   border: 0.75rem solid transparent;
-  border-top: 0.75rem solid hsl(var(--c-accent-main-low));
+  border-top: 0.75rem solid hsl(var(--c-accent-bright));
   transform: scaleX(0.5) translateY(-1px);
 }
 body:not(.grabbing) .skills .skill-cell {
   cursor: grab;
 }
 body:not(.grabbing) .skills .skill-cell:hover .blend {
-  background-color: hsl(var(--c-accent-main-medium));
+  background-color: hsl(var(--c-accent-medium));
 }
 body:not(.grabbing) .skills .skill-cell:hover span {
-  color: hsl(var(--c-accent-main-medium));
+  color: hsl(var(--c-accent-medium));
 }
 .skills .grabbed-skill {
   position: fixed;
@@ -896,8 +887,8 @@ body:not(.grabbing) .skills .skill-cell:hover span {
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-  color: hsl(var(--c-text-medium-light));
-  background-color: hsl(var(--c-bg-dark));
+  color: hsl(var(--c-accent-dark));
+  background-color: hsl(var(--c-accent-neutral-light));
   border-radius: 0.25rem;
   pointer-events: none;
   touch-action: none;
@@ -917,7 +908,7 @@ body:not(.grabbing) .skills .skill-cell:hover span {
 }
 .skills .skill-element .blend {
   transition: background-color 75ms ease-out;
-  background-color: hsl(var(--c-text-medium));
+  background-color: hsl(var(--c-accent-dark));
 }
 .skills .skill-element span {
   transition: color 75ms ease-out;
@@ -929,10 +920,10 @@ body:not(.grabbing) .skills .skill-cell:hover span {
   }
 }
 .skills .skill-element.grabbed .blend {
-  background: linear-gradient(hsl(var(--c-accent-main-medium)), hsl(var(--c-accent-main-low)));
+  background: linear-gradient(hsl(var(--c-accent-light)), hsl(var(--c-accent-medium)));
 }
 .skills .skill-element.grabbed span {
-  color: hsl(var(--c-accent-main-low));
+  color: hsl(var(--c-accent-medium));
 }
 
 @keyframes attention-grabber-bounce {
@@ -985,7 +976,7 @@ body:not(.grabbing) .skills .skill-cell:hover span {
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
   padding-bottom: 2rem;
-  border-bottom: 1px solid hsl(var(--c-text-medium));
+  border-bottom: 1px solid hsl(var(--c-border-main));
 }
 .projects .project-element:last-of-type {
   border-bottom: none;
@@ -1030,8 +1021,8 @@ body:not(.grabbing) .skills .skill-cell:hover span {
 }
 .projects .project-element .title-container .tags-container .tag {
   font-size: var(--fs-200);
-  color: hsl(var(--c-text-medium));
-  border: 1px solid hsl(var(--c-text-medium));
+  color: hsl(var(--c-accent-neutral));
+  border: 1px solid hsl(var(--c-accent-neutral));
   border-radius: 2px;
   padding: 2px 4px;
 }
@@ -1041,15 +1032,15 @@ body:not(.grabbing) .skills .skill-cell:hover span {
   }
 }
 .projects .project-element .title-container .tags-container .tag.bold {
-  color: hsl(var(--c-accent-main-low));
-  border-color: hsl(var(--c-accent-main-low));
+  color: hsl(var(--c-accent-bright));
+  border-color: hsl(var(--c-accent-bright));
 }
 .projects .project-element img,
 .projects .project-element .links-container {
   border-radius: 0.125rem;
 }
 .projects .project-element img {
-  border: 1px solid hsl(var(--c-text-medium));
+  border: 1px solid hsl(var(--c-border-main));
   border-radius: 0.125rem;
   aspect-ratio: 1.5;
   -o-object-fit: cover;
@@ -1061,7 +1052,7 @@ body:not(.grabbing) .skills .skill-cell:hover span {
   margin-bottom: 0.5em;
 }
 .projects .project-element .description strong {
-  color: hsl(var(--c-accent-main-medium));
+  color: hsl(var(--c-accent-bright));
 }
 .projects .project-element .links-container {
   margin-top: auto;
@@ -1072,12 +1063,13 @@ body:not(.grabbing) .skills .skill-cell:hover span {
   transition: color 125ms ease-out 0ms, background-color 125ms ease-out 0ms, transform 125ms ease-out 0ms, border-color 125ms ease-out 0ms;
   margin-top: 0.5em;
   text-align: center;
-  color: hsl(var(--c-text-light));
+  color: hsl(var(--c-text-main));
   padding-bottom: 2px;
-  border-bottom: 3px solid hsl(var(--c-accent-main-medium));
+  border-bottom: 3px solid hsl(var(--c-accent-medium));
 }
 .projects .project-element .links-container a:hover {
-  color: hsl(var(--c-accent-main-medium));
+  color: hsl(var(--c-accent-bright));
+  border-color: hsl(var(--c-accent-bright));
 }
 @media (min-width: 26.625em) {
   .projects .project-element .links-container {
@@ -1088,24 +1080,23 @@ body:not(.grabbing) .skills .skill-cell:hover span {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: color 125ms ease-out 0ms, background-color 125ms ease-out 0ms, transform 125ms ease-out 0ms, border-color 125ms ease-out 0ms;
+    transition: color 75ms ease-out 0ms, background-color 75ms ease-out 0ms, transform 75ms ease-out 0ms, border-color 75ms ease-out 0ms;
     background-color: transparent;
   }
   .projects .project-element .links-container a {
     pointer-events: none;
     width: unset;
     background: transparent;
-    color: transparent;
     color: hsl(var(--c-text-light));
     position: absolute;
     left: -100vw;
     transform: translateX(-100%);
     opacity: 0;
-    transition: transform 55ms ease-out, opacity 55ms ease-out;
+    transition: transform 55ms ease-out, opacity 55ms ease-out, color 55ms ease-out, border-color 55ms ease-out;
   }
   .projects .project-element .links-container:hover {
-    transition: color 250ms ease-out 0ms, background-color 250ms ease-out 0ms, transform 250ms ease-out 0ms, border-color 250ms ease-out 0ms;
-    background-color: hsl(var(--c-bg-dark)/85%);
+    transition: color 200ms ease-out 0ms, background-color 200ms ease-out 0ms, transform 200ms ease-out 0ms, border-color 200ms ease-out 0ms;
+    background-color: hsl(var(--c-accent-dark)/85%);
   }
   .projects .project-element .links-container:hover a {
     pointer-events: all;
@@ -1118,11 +1109,11 @@ body:not(.grabbing) .skills .skill-cell:hover span {
   }
   .projects .project-element .links-container:hover a:nth-child(1) {
     margin-bottom: 3em;
-    transition: transform 250ms ease-out, opacity 250ms ease-out 150ms, color 75ms ease-out;
+    transition: transform 250ms ease-out, opacity 250ms ease-out 150ms, color 75ms ease-out, border-color 75ms ease-out;
   }
   .projects .project-element .links-container:hover a:nth-child(2) {
     margin-top: 3em;
-    transition: transform 250ms ease-out 100ms, opacity 250ms ease-out 250ms, color 75ms ease-out;
+    transition: transform 250ms ease-out 100ms, opacity 250ms ease-out 250ms, color 75ms ease-out, border-color 75ms ease-out;
   }
 }
 
@@ -1158,8 +1149,6 @@ body:not(.grabbing) .skills .skill-cell:hover span {
 
 .section-title {
   position: relative;
-  color: hsl(var(--c-accent-main-medium));
-  color: hsl(var(--c-text-light));
   text-align: center;
   margin-bottom: 2.5rem;
   padding-bottom: 1rem;
@@ -1172,7 +1161,7 @@ body:not(.grabbing) .skills .skill-cell:hover span {
 .section-title::after {
   content: "";
   position: absolute;
-  background-color: hsl(var(--c-accent-main-medium));
+  background-color: hsl(var(--c-accent-medium));
   width: 2ch;
   height: 0.35rem;
   border-radius: 10ch;

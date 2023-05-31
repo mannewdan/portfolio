@@ -21,7 +21,7 @@ export default function About() {
         </div>
 
         {/* History */}
-        <p className="text-b-s c-text-medium history">
+        <p className="text-b-s c-text-50 history">
           {`I became interested in web development in the Summer of 2022, and pursued my learning through `}
           <a
             target="_blank"

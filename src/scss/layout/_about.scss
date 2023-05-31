@@ -47,10 +47,10 @@
     }
   }
   .name {
-    color: hsl(var(--c-text-light));
+    color: hsl(var(--c-accent-dark));
   }
   .title {
-    color: hsl(var(--c-accent-main-medium));
+    color: hsl(var(--c-accent-medium));
     margin-bottom: 0.5rem;
   }
   .description {
@@ -65,8 +65,8 @@
     text-align: center;
     max-width: 40ch;
     margin-inline: auto;
-    border-top: 2px solid hsl(var(--c-text-medium) / 25%);
-    border-bottom: 2px solid hsl(var(--c-text-medium) / 25%);
+    border-top: 1px solid hsl(var(--c-border-main));
+    border-bottom: 1px solid hsl(var(--c-border-main));
     @include breakpoint(medium) {
       grid-column: 1 / span 2;
       margin-top: 1.5rem;
@@ -110,7 +110,7 @@
     .background {
       width: 100%;
       height: 100%;
-      background: hsl(var(--c-bg-medium) / 7%);
+      background: hsl(var(--c-accent-dark) / 50%);
       position: absolute;
       z-index: 1;
     }
@@ -131,7 +131,7 @@
     }
     .small-circle {
       width: 50%;
-      border: 12px solid hsl(var(--c-text-medium) / 15%);
+      border: 12px solid hsl(var(--c-accent-medium) / 25%);
       transform: translateX(-50%);
       clip-path: polygon(50% 0%, 50% 100%, 0% 100%, 0% 0%);
       bottom: 50%;
@@ -143,7 +143,7 @@
     }
     .large-circle {
       width: 100%;
-      border: 4px solid hsl(var(--c-text-medium-light) / 15%);
+      border: 4px solid hsl(var(--c-accent-light) / 40%);
       transform: translateX(50%);
       right: 0;
       top: 25%;

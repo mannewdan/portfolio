@@ -8,7 +8,9 @@ export default function Header() {
     <>
       <header className="header padded-container">
         <Background />
-        <span className="text-h-s unselectable">Daniel Newman</span>
+        <span className="text-h-s unselectable c-text-light">
+          Daniel Newman
+        </span>
         <div
           className={`nav-dropdown-button ${active ? "active" : ""}`}
           onClick={() => setActive((prev) => !prev)}

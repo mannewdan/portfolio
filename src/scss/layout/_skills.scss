@@ -8,16 +8,6 @@
   & > p {
     margin-top: 1rem;
     text-align: center;
-
-    a {
-      color: hsl(var(--c-text-medium-light));
-      text-decoration: none;
-      @include fadeColor(75ms);
-
-      &:hover {
-        color: hsl(var(--c-accent-main-medium));
-      }
-    }
   }
 
   .grid {
@@ -46,8 +36,7 @@
 
   //SkillCell
   .skill-cell {
-    border: 2px dashed hsl(var(--c-text-medium));
-    background-color: hsl(var(--c-bg-dark) / 25%);
+    border: 2px dashed hsl(var(--c-accent-neutral));
     padding: 1px;
     border-radius: 0.25rem;
     height: 100%;
@@ -55,15 +44,15 @@
     transition: border-color 125ms ease-out;
     &.attention-grabber {
       .skill-element span {
-        color: hsl(var(--c-accent-main-low));
+        color: hsl(var(--c-accent-bright));
       }
       .skill-element .blend {
-        background-color: hsl(var(--c-accent-main-low));
+        background-color: hsl(var(--c-accent-bright));
       }
-      border-color: hsl(var(--c-accent-main-low));
+      border-color: hsl(var(--c-accent-bright));
     }
     &:hover {
-      border-color: hsl(var(--c-accent-main-medium));
+      border-color: hsl(var(--c-accent-medium));
     }
 
     position: relative;
@@ -87,7 +76,8 @@
       @include breakpoint(small) {
         font-size: var(--fs-400);
       }
-      background-color: hsl(var(--c-accent-main-low));
+      color: hsl(var(--c-text-light));
+      background-color: hsl(var(--c-accent-bright));
 
       transition: opacity 75ms ease-out;
       &.hide {
@@ -104,7 +94,7 @@
         position: absolute;
         top: 100%;
         border: 0.75rem solid transparent;
-        border-top: 0.75rem solid hsl(var(--c-accent-main-low));
+        border-top: 0.75rem solid hsl(var(--c-accent-bright));
         transform: scaleX(0.5) translateY(-1px);
       }
     }
@@ -114,10 +104,10 @@
       cursor: grab;
     }
     body:not(.grabbing) &:hover .blend {
-      background-color: hsl(var(--c-accent-main-medium));
+      background-color: hsl(var(--c-accent-medium));
     }
     body:not(.grabbing) &:hover span {
-      color: hsl(var(--c-accent-main-medium));
+      color: hsl(var(--c-accent-medium));
     }
   }
 
@@ -145,8 +135,8 @@
     gap: 1rem;
     padding: 1rem;
 
-    color: hsl(var(--c-text-medium-light));
-    background-color: hsl(var(--c-bg-dark));
+    color: hsl(var(--c-accent-dark));
+    background-color: hsl(var(--c-accent-neutral-light));
     border-radius: 0.25rem;
 
     pointer-events: none;
@@ -164,7 +154,7 @@
     //default colors
     .blend {
       transition: background-color 75ms ease-out;
-      background-color: hsl(var(--c-text-medium));
+      background-color: hsl(var(--c-accent-dark));
     }
     span {
       transition: color 75ms ease-out;
@@ -176,12 +166,12 @@
     //grab states
     &.grabbed .blend {
       background: linear-gradient(
-        hsl(var(--c-accent-main-medium)),
-        hsl(var(--c-accent-main-low))
+        hsl(var(--c-accent-light)),
+        hsl(var(--c-accent-medium))
       );
     }
     &.grabbed span {
-      color: hsl(var(--c-accent-main-low));
+      color: hsl(var(--c-accent-medium));
     }
   }
 }

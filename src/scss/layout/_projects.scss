@@ -28,7 +28,7 @@
     border-top-left-radius: 0.25rem;
     border-top-right-radius: 0.25rem;
     padding-bottom: 2rem;
-    border-bottom: 1px solid hsl(var(--c-text-medium));
+    border-bottom: 1px solid hsl(var(--c-border-main));
     &:last-of-type {
       border-bottom: none;
       padding-bottom: 0;
@@ -71,13 +71,13 @@
           @include breakpoint(medium) {
             font-size: var(--fs-300);
           }
-          color: hsl(var(--c-text-medium));
-          border: 1px solid hsl(var(--c-text-medium));
+          color: hsl(var(--c-accent-neutral));
+          border: 1px solid hsl(var(--c-accent-neutral));
           border-radius: 2px;
           padding: 2px 4px;
           &.bold {
-            color: hsl(var(--c-accent-main-low));
-            border-color: hsl(var(--c-accent-main-low));
+            color: hsl(var(--c-accent-bright));
+            border-color: hsl(var(--c-accent-bright));
           }
         }
       }
@@ -87,7 +87,7 @@
       border-radius: 0.125rem;
     }
     img {
-      border: 1px solid hsl(var(--c-text-medium));
+      border: 1px solid hsl(var(--c-border-main));
       border-radius: 0.125rem;
       aspect-ratio: 1.5;
       object-fit: cover;
@@ -96,7 +96,7 @@
     .description {
       margin-bottom: 0.5em;
       strong {
-        color: hsl(var(--c-accent-main-medium));
+        color: hsl(var(--c-accent-bright));
       }
     }
 
@@ -109,11 +109,12 @@
 
         margin-top: 0.5em;
         text-align: center;
-        color: hsl(var(--c-text-light));
+        color: hsl(var(--c-text-main));
         padding-bottom: 2px;
-        border-bottom: 3px solid hsl(var(--c-accent-main-medium));
+        border-bottom: 3px solid hsl(var(--c-accent-medium));
         &:hover {
-          color: hsl(var(--c-accent-main-medium));
+          color: hsl(var(--c-accent-bright));
+          border-color: hsl(var(--c-accent-bright));
         }
       }
 
@@ -131,20 +132,20 @@
           pointer-events: none;
           width: unset;
           background: transparent;
-          color: transparent;
           color: hsl(var(--c-text-light));
           position: absolute;
           left: -100vw;
           transform: translateX(-100%);
           opacity: 0;
-          transition: transform 55ms ease-out, opacity 55ms ease-out;
+          transition: transform 55ms ease-out, opacity 55ms ease-out,
+            color 55ms ease-out, border-color 55ms ease-out;
         }
 
-        @include fade(125ms);
+        @include fade(75ms);
         background-color: transparent;
         &:hover {
-          @include fade;
-          background-color: hsl(var(--c-bg-dark) / 85%);
+          @include fade(200ms);
+          background-color: hsl(var(--c-accent-dark) / 85%);
 
           a {
             pointer-events: all;
@@ -158,12 +159,13 @@
             &:nth-child(1) {
               margin-bottom: 3em;
               transition: transform 250ms ease-out, opacity 250ms ease-out 150ms,
-                color 75ms ease-out;
+                color 75ms ease-out, border-color 75ms ease-out;
             }
             &:nth-child(2) {
               margin-top: 3em;
               transition: transform 250ms ease-out 100ms,
-                opacity 250ms ease-out 250ms, color 75ms ease-out;
+                opacity 250ms ease-out 250ms, color 75ms ease-out,
+                border-color 75ms ease-out;
             }
           }
         }
