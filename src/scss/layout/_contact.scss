@@ -1,6 +1,6 @@
 .contact {
+  padding-top: 1rem;
   padding-bottom: 4rem;
-  padding-top: 4rem;
   clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
   .background-animation {
     z-index: -1;
@@ -16,5 +16,11 @@
     margin-bottom: 0.25em;
     max-width: 50ch;
     margin-inline: auto;
+  }
+  a {
+    display: block;
+    width: 3rem;
+    margin-inline: auto;
+    margin-top: 1rem;
   }
 }

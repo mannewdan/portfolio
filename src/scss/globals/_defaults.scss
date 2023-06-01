@@ -51,7 +51,13 @@ a {
   text-decoration: none;
   @include fadeColor(50ms);
 
+  .blend {
+    @include fadeColor(50ms);
+  }
   &:hover {
     color: hsl(var(--c-accent-bright));
+    .blend {
+      background-color: hsl(var(--c-accent-bright));
+    }
   }
 }

@@ -1,3 +1,5 @@
+import Icon from "./Icon";
+
 export default function About() {
   return (
     <section className="about">
@@ -10,6 +12,19 @@ export default function About() {
             {`I'm a self-taught frontend developer from the Twin Cities area and
             I'm excited to start my career in web development!`}
           </p>
+        </div>
+
+        {/* Links */}
+        <div className="links-container">
+          <a
+            target="_blank"
+            href="https://www.linkedin.com/in/daniel-newman-19aa48267/"
+          >
+            <Icon url="logos/linkedin.svg" />
+          </a>
+          <a target="_blank" href="https://github.com/mannewdan">
+            <Icon url="logos/github.svg" />
+          </a>
         </div>
 
         {/* Image */}
