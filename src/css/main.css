@@ -982,13 +982,9 @@ body:not(.grabbing) .skills .skill-cell:hover span {
   border-bottom: none;
   padding-bottom: 0;
 }
-@media (min-width: 26.625em) {
-  .projects .project-element {
-    padding-bottom: 0.5rem;
-  }
-}
 @media (min-width: 40em) {
   .projects .project-element {
+    padding-bottom: 0.5rem;
     border-bottom: none;
     padding-bottom: 0;
   }
@@ -1000,8 +996,6 @@ body:not(.grabbing) .skills .skill-cell:hover span {
   .projects .project-element.featured {
     grid-column: 1/span 2;
   }
-}
-@media (min-width: 26.625em) {
   .projects .project-element.featured .links-container:hover a {
     transition: transform 250ms ease-out, opacity 250ms ease-out 100ms;
   }
@@ -1071,7 +1065,7 @@ body:not(.grabbing) .skills .skill-cell:hover span {
   color: hsl(var(--c-accent-bright));
   border-color: hsl(var(--c-accent-bright));
 }
-@media (min-width: 26.625em) {
+@media (min-width: 40em) {
   .projects .project-element .links-container {
     position: absolute;
     width: 100%;
@@ -1168,5 +1162,27 @@ body:not(.grabbing) .skills .skill-cell:hover span {
   left: 0;
   right: 0;
   top: 100%;
+  margin-inline: auto;
+}
+
+.contact {
+  padding-bottom: 4rem;
+  padding-top: 4rem;
+  -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+          clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+.contact .background-animation {
+  z-index: -1;
+}
+.contact .section-title {
+  margin-bottom: 2rem;
+}
+.contact .section-title::after {
+  background-color: hsl(var(--c-text-light));
+}
+.contact p {
+  text-align: center;
+  margin-bottom: 0.25em;
+  max-width: 50ch;
   margin-inline: auto;
 }/*# sourceMappingURL=main.css.map */
