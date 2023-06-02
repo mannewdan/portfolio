@@ -1,0 +1,75 @@
+@use "../globals/breakpoints" as *;
+
+:root {
+  --video-label-height: 1.75rem;
+}
+
+.video-container {
+  position: relative;
+  border: 1px solid hsl(var(--c-accent-neutral));
+  background-color: hsl(var(--c-accent-neutral-light));
+  border-radius: 0.125rem;
+  .label {
+    height: var(--video-label-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--fs-300);
+    @include breakpoint(tiny) {
+      font-size: var(--fs-400);
+    }
+    @include breakpoint(small) {
+      font-size: var(--fs-300);
+    }
+    @include breakpoint(medium) {
+      font-size: var(--fs-400);
+    }
+  }
+  .indicator {
+    --indicator-size: 4rem;
+    pointer-events: none;
+    position: absolute;
+    top: calc(
+      50% - var(--video-label-height) * 0.5 - var(--indicator-size) * 0.5
+    );
+    left: 0;
+    right: 0;
+    margin-inline: auto;
+
+    width: var(--indicator-size);
+    padding: 0.5rem;
+
+    background-color: hsl(var(--c-accent-medium));
+    box-shadow: 0 0 6px hsl(0 0% 0% / 15%);
+    border-radius: 50%;
+
+    &.play .icon {
+      transform: translateX(5%);
+    }
+
+    &.pulse-fade {
+      animation-name: video-indicator-pulse-fade;
+      animation-duration: 350ms;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+    }
+  }
+}
+video {
+  aspect-ratio: 1.5;
+  object-fit: cover;
+  cursor: pointer;
+  background: black;
+  border-radius: 0.125rem;
+}
+
+@keyframes video-indicator-pulse-fade {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.25);
+  }
+}
