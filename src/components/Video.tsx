@@ -36,21 +36,24 @@ export default function Video({ video, onClick }: VideoProps) {
       </video>
       <p className="label text-h-s">{video.label}</p>
 
-      {!playedOnce && (
-        <div className="indicator play">
+      <div
+        className={`icon-container ${
+          video.isPlaying ? "play" : video.lastClicked ? "pause" : ""
+        } ${!playedOnce ? "force-show" : ""}`}
+      >
+        <div
+          className="indicator play"
+          style={{
+            animationDelay:
+              video.lastClicked && !video.isPlaying ? "350ms" : "0ms",
+          }}
+        >
           <Icon url="play.svg" />
         </div>
-      )}
-      {playedOnce && video.lastClicked && video.isPlaying && (
-        <div className="indicator play pulse-fade">
-          <Icon url="play.svg" />
-        </div>
-      )}
-      {playedOnce && video.lastClicked && !video.isPlaying && (
-        <div className="indicator pause pulse-fade">
+        <div className="indicator pause">
           <Icon url="pause.svg" />
         </div>
-      )}
+      </div>
     </div>
   );
 }

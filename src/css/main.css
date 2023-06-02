@@ -1261,6 +1261,34 @@ body:not(.grabbing) .skills .skill-cell:hover span {
     font-size: var(--fs-400);
   }
 }
+.video-container .icon-container .indicator.play {
+  opacity: 1;
+  animation-name: video-indicator-grow;
+  animation-duration: 150ms;
+  animation-timing-function: ease-out;
+  animation-fill-mode: both;
+  animation-delay: 350ms;
+}
+.video-container .icon-container .indicator.pause {
+  opacity: 0;
+}
+.video-container .icon-container.force-show .indicator.play {
+  opacity: 1;
+}
+.video-container .icon-container.play .indicator.play {
+  animation-name: video-indicator-pulse-fade;
+  animation-duration: 350ms;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+  animation-delay: 0ms;
+}
+.video-container .icon-container.pause .indicator.pause {
+  animation-name: video-indicator-pulse-fade;
+  animation-duration: 350ms;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+  animation-delay: 0ms;
+}
 .video-container .indicator {
   --indicator-size: 4rem;
   pointer-events: none;
@@ -1283,6 +1311,7 @@ body:not(.grabbing) .skills .skill-cell:hover span {
   animation-duration: 350ms;
   animation-timing-function: linear;
   animation-fill-mode: both;
+  animation-delay: 0ms;
 }
 
 video {
@@ -1302,5 +1331,15 @@ video {
   100% {
     opacity: 0;
     transform: scale(1.25);
+  }
+}
+@keyframes video-indicator-grow {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }/*# sourceMappingURL=main.css.map */
