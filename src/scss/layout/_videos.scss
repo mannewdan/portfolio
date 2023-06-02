@@ -37,10 +37,6 @@
     .indicator.pause {
       opacity: 0;
     }
-
-    &.force-show .indicator.play {
-      opacity: 1;
-    }
     &.play .indicator.play {
       animation-name: video-indicator-pulse-fade;
       animation-duration: 350ms;

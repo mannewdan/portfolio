@@ -8,7 +8,6 @@ type VideoProps = {
 };
 
 export default function Video({ video, onClick }: VideoProps) {
-  const [playedOnce, setPlayedOnce] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -23,7 +22,6 @@ export default function Video({ video, onClick }: VideoProps) {
     <div className="video-container">
       <video
         onClick={() => {
-          setPlayedOnce(true);
           onClick();
         }}
         ref={videoRef}
@@ -39,7 +37,7 @@ export default function Video({ video, onClick }: VideoProps) {
       <div
         className={`icon-container ${
           video.isPlaying ? "play" : video.lastClicked ? "pause" : ""
-        } ${!playedOnce ? "force-show" : ""}`}
+        }`}
       >
         <div
           className="indicator play"

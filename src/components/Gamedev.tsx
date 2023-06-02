@@ -1,12 +1,9 @@
 import { useState, useEffect } from "react";
 import Video from "./Video";
+import GalleryView from "./GalleryView";
 import data from "../gamedevdata.json";
 import useWindowSize from "./SkillsSection/useWindowSize";
 
-type GamedevProps = {
-  openGalleryView: (video: VideoT) => void;
-  clearVideo: () => void;
-};
 export type VideoT = {
   id: number;
   label: string;
@@ -15,7 +12,8 @@ export type VideoT = {
   lastClicked: boolean;
 };
 
-export default function Gamedev({ openGalleryView, clearVideo }: GamedevProps) {
+export default function Gamedev() {
+  const [currentVideo, setCurrentVideo] = useState<VideoT | null>(null);
   const [videos, setVideos] = useState<Array<VideoT>>(
     data.map((item) => {
       return { ...item, isPlaying: false, lastClicked: false };
@@ -45,7 +43,7 @@ export default function Gamedev({ openGalleryView, clearVideo }: GamedevProps) {
   useEffect(() => {
     pauseAll();
     if (!isSmall) {
-      clearVideo();
+      setCurrentVideo(null);
     }
   }, [isSmall]);
 
@@ -57,7 +55,7 @@ export default function Gamedev({ openGalleryView, clearVideo }: GamedevProps) {
         video={item}
         onClick={() => {
           if (isSmall) {
-            openGalleryView(item);
+            setCurrentVideo(item);
           } else {
             toggleIsPlaying(item.id);
             pauseAll(item.id);
@@ -67,15 +65,22 @@ export default function Gamedev({ openGalleryView, clearVideo }: GamedevProps) {
     );
   });
   return (
-    <section className="gamedev alt">
-      <h2 className="text-h-m section-title">Other Works</h2>
-      <p className="description text-b-s c-text-medium padded-container">
-        A look at some other things I've done in my free time
-      </p>
+    <>
+      <section className="gamedev alt">
+        <h2 className="text-h-m section-title">Other Works</h2>
+        <p className="description text-b-s c-text-medium padded-container">
+          A look at some other things I've done in my free time
+        </p>
 
-      <div className="padded-container">
-        <div className="grid">{videoEls}</div>
-      </div>
-    </section>
+        <div className="padded-container">
+          <div className="grid">{videoEls}</div>
+        </div>
+      </section>
+
+      <GalleryView
+        video={currentVideo}
+        clearVideo={() => setCurrentVideo(null)}
+      />
+    </>
   );
 }

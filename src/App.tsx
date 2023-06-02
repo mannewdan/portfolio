@@ -10,8 +10,6 @@ import { useState } from "react";
 import { VideoT } from "./components/Gamedev";
 
 export default function App() {
-  const [currentVideo, setCurrentVideo] = useState<VideoT | null>(null);
-
   return (
     <>
       <Header />
@@ -20,15 +18,8 @@ export default function App() {
         <About />
         <Skills />
         <Projects />
-        <Gamedev
-          openGalleryView={setCurrentVideo}
-          clearVideo={() => setCurrentVideo(null)}
-        />
+        <Gamedev />
         <Contact />
-        <GalleryView
-          video={currentVideo}
-          clearVideo={() => setCurrentVideo(null)}
-        />
       </main>
     </>
   );

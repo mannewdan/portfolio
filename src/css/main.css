@@ -1281,9 +1281,6 @@ body:not(.grabbing) .skills .skill-cell:hover span {
 .video-container .icon-container .indicator.pause {
   opacity: 0;
 }
-.video-container .icon-container.force-show .indicator.play {
-  opacity: 1;
-}
 .video-container .icon-container.play .indicator.play {
   animation-name: video-indicator-pulse-fade;
   animation-duration: 350ms;
@@ -1381,10 +1378,24 @@ video {
   pointer-events: all;
   width: calc(100% - 6rem);
   max-width: calc(1.5 * (100vh - 4rem - var(--video-label-height)));
+  animation-name: gallery-container-grow;
+  animation-duration: 150ms;
+  animation-timing-function: ease-out;
 }
 .gallery-view .video-container video {
   width: 100%;
 }
 .gallery-view .video-container .label {
   font-size: var(--fs-400);
+}
+
+@keyframes gallery-container-grow {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }/*# sourceMappingURL=main.css.map */
