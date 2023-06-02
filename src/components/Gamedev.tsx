@@ -13,7 +13,7 @@ export type VideoT = {
 };
 
 export default function Gamedev() {
-  const [currentVideo, setCurrentVideo] = useState<VideoT | null>(null);
+  const [currentVideo, setCurrentVideo] = useState<number | null>(null);
   const [videos, setVideos] = useState<Array<VideoT>>(
     data.map((item) => {
       return { ...item, isPlaying: false, lastClicked: false };
@@ -39,6 +39,31 @@ export default function Gamedev() {
       });
     });
   }
+  function setIsPlaying(id: number, isPlaying: boolean, lastClicked: boolean) {
+    setVideos((prev) => {
+      return prev.map((item) => {
+        if (item.id === id) {
+          return { ...item, isPlaying, lastClicked };
+        } else return { ...item, isPlaying: false, lastClicked: false };
+      });
+    });
+  }
+  function cycleCurrentVideo(direction: number) {
+    setCurrentVideo((prev) => {
+      if (prev === null) return 0;
+
+      let newIndex;
+      if (direction >= 0) {
+        newIndex = prev + 1;
+        if (newIndex > videos.length - 1) newIndex = 0;
+      } else {
+        newIndex = prev - 1;
+        if (newIndex < 0) newIndex = videos.length - 1;
+      }
+
+      return newIndex;
+    });
+  }
 
   useEffect(() => {
     pauseAll();
@@ -46,21 +71,27 @@ export default function Gamedev() {
       setCurrentVideo(null);
     }
   }, [isSmall]);
+  useEffect(() => {
+    if (currentVideo !== null)
+      setIsPlaying(videos[currentVideo].id, true, true);
+  }, [currentVideo]);
 
   //rendering
-  const videoEls = videos.map((item) => {
+  const videoEls = videos.map((item, index) => {
     return (
       <Video
         key={item.id}
         video={item}
         onClick={() => {
           if (isSmall) {
-            setCurrentVideo(item);
+            toggleIsPlaying(item.id);
+            setCurrentVideo(index);
           } else {
             toggleIsPlaying(item.id);
             pauseAll(item.id);
           }
         }}
+        canPlay={!isSmall}
       />
     );
   });
@@ -78,8 +109,16 @@ export default function Gamedev() {
       </section>
 
       <GalleryView
-        video={currentVideo}
-        clearVideo={() => setCurrentVideo(null)}
+        video={currentVideo !== null ? videos[currentVideo] : null}
+        clearVideo={() => {
+          pauseAll();
+          setCurrentVideo(null);
+        }}
+        togglePlay={() => {
+          if (currentVideo !== null) toggleIsPlaying(videos[currentVideo].id);
+        }}
+        onLeft={() => cycleCurrentVideo(-1)}
+        onRight={() => cycleCurrentVideo(1)}
       />
     </>
   );

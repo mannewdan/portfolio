@@ -11,6 +11,12 @@
   justify-content: center;
   align-items: center;
 
+  &.disable-animation {
+    .indicator.play {
+      display: none;
+    }
+  }
+
   .screen-fader {
     position: absolute;
     background-color: hsl(0 0% 0% / 50%);

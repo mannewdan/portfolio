@@ -1,4 +1,5 @@
 @use "../globals/breakpoints" as *;
+@use "../globals/utils" as *;
 
 :root {
   --video-label-height: 1.75rem;
@@ -79,6 +80,55 @@
       animation-timing-function: linear;
       animation-fill-mode: both;
       animation-delay: 0ms;
+    }
+  }
+  .close-x {
+    cursor: pointer;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1;
+
+    width: 4rem;
+    box-shadow: 0 0 6px hsl(0 0% 0% / 25%);
+    border-radius: 50%;
+    span {
+      font-size: var(--fs-700);
+    }
+    .blend {
+      @include fade(75ms);
+    }
+    &:hover {
+      .blend {
+        background-color: hsl(var(--c-accent-bright));
+      }
+    }
+  }
+  .arrow {
+    --arrow-size: 5rem;
+    cursor: pointer;
+    position: absolute;
+    top: calc(50% - var(--arrow-size) * 0.5);
+    width: var(--arrow-size);
+
+    @include fade(75ms);
+    &.left {
+      left: calc(var(--arrow-size) * -1);
+      .icon {
+        transform: rotate(90deg);
+      }
+      &:hover {
+        transform: translateX(-0.25rem);
+      }
+    }
+    &.right {
+      right: calc(var(--arrow-size) * -1);
+      .icon {
+        transform: rotate(270deg);
+      }
+      &:hover {
+        transform: translateX(0.25rem);
+      }
     }
   }
 }

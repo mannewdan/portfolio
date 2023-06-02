@@ -5,13 +5,28 @@ import Icon from "./Icon";
 type VideoProps = {
   video: VideoT;
   onClick: () => void;
+  closeable?: boolean;
+  onClose?: () => void;
+  cycleable?: boolean;
+  onLeft?: () => void;
+  onRight?: () => void;
+  canPlay?: boolean;
 };
 
-export default function Video({ video, onClick }: VideoProps) {
+export default function Video({
+  video,
+  onClick,
+  closeable = false,
+  onClose = () => {},
+  cycleable = false,
+  onLeft = () => {},
+  onRight = () => {},
+  canPlay = true,
+}: VideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    if (video.isPlaying) {
+    if (canPlay && video.isPlaying) {
       videoRef.current?.play();
     } else {
       videoRef.current?.pause();
@@ -21,6 +36,7 @@ export default function Video({ video, onClick }: VideoProps) {
   return (
     <div className="video-container">
       <video
+        key={video.url}
         onClick={() => {
           onClick();
         }}
@@ -36,9 +52,14 @@ export default function Video({ video, onClick }: VideoProps) {
 
       <div
         className={`icon-container ${
-          video.isPlaying ? "play" : video.lastClicked ? "pause" : ""
+          canPlay && video.isPlaying
+            ? "play"
+            : canPlay && video.lastClicked
+            ? "pause"
+            : ""
         }`}
       >
+        {/* Play Indicator */}
         <div
           className="indicator play"
           style={{
@@ -48,10 +69,31 @@ export default function Video({ video, onClick }: VideoProps) {
         >
           <Icon url="play.svg" />
         </div>
+
+        {/* Pause Indicator */}
         <div className="indicator pause">
           <Icon url="pause.svg" />
         </div>
       </div>
+
+      {/* X Button */}
+      {closeable && (
+        <div onClick={() => onClose()} className="close-x">
+          <Icon url="x.svg" />
+        </div>
+      )}
+
+      {/* Arrow Buttons */}
+      {cycleable && (
+        <>
+          <div onClick={() => onLeft()} className="arrow left">
+            <Icon url="arrow.svg" />
+          </div>
+          <div onClick={() => onRight()} className="arrow right">
+            <Icon url="arrow.svg" />
+          </div>
+        </>
+      )}
     </div>
   );
 }
