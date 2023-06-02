@@ -1,7 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Video from "./Video";
 import data from "../gamedevdata.json";
+import useWindowSize from "./SkillsSection/useWindowSize";
 
+type GamedevProps = {
+  openGalleryView: (video: VideoT) => void;
+  clearVideo: () => void;
+};
 export type VideoT = {
   id: number;
   label: string;
@@ -10,14 +15,15 @@ export type VideoT = {
   lastClicked: boolean;
 };
 
-export default function Gamedev() {
+export default function Gamedev({ openGalleryView, clearVideo }: GamedevProps) {
   const [videos, setVideos] = useState<Array<VideoT>>(
     data.map((item) => {
       return { ...item, isPlaying: false, lastClicked: false };
     })
   );
+  const { isSmall } = useWindowSize();
 
-  function pauseAll(exceptForThisID: number) {
+  function pauseAll(exceptForThisID?: number) {
     setVideos((prev) => {
       return prev.map((item) => {
         if (item.id === exceptForThisID) {
@@ -36,6 +42,13 @@ export default function Gamedev() {
     });
   }
 
+  useEffect(() => {
+    pauseAll();
+    if (!isSmall) {
+      clearVideo();
+    }
+  }, [isSmall]);
+
   //rendering
   const videoEls = videos.map((item) => {
     return (
@@ -43,8 +56,12 @@ export default function Gamedev() {
         key={item.id}
         video={item}
         onClick={() => {
-          toggleIsPlaying(item.id);
-          pauseAll(item.id);
+          if (isSmall) {
+            openGalleryView(item);
+          } else {
+            toggleIsPlaying(item.id);
+            pauseAll(item.id);
+          }
         }}
       />
     );

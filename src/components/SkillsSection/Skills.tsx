@@ -22,7 +22,7 @@ export default function Skills() {
   const [cellSize, setCellSize] = useState({ x: 0, y: 0 });
   const [columns, setColumns] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [windowSize] = useWindowSize();
+  const { windowSize } = useWindowSize();
   const [mousePos] = useMousePosition();
   const [cellPosOffset, setCellPosOffset] = useState({ x: 0, y: 0 });
   const [attentionGrabber, setAttentionGrabber] = useState(true);

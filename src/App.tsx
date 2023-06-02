@@ -5,8 +5,13 @@ import Skills from "./components/SkillsSection/Skills";
 import Projects from "./components/Projects";
 import Gamedev from "./components/Gamedev";
 import Contact from "./components/Contact";
+import GalleryView from "./components/GalleryView";
+import { useState } from "react";
+import { VideoT } from "./components/Gamedev";
 
 export default function App() {
+  const [currentVideo, setCurrentVideo] = useState<VideoT | null>(null);
+
   return (
     <>
       <Header />
@@ -15,8 +20,15 @@ export default function App() {
         <About />
         <Skills />
         <Projects />
-        <Gamedev />
+        <Gamedev
+          openGalleryView={setCurrentVideo}
+          clearVideo={() => setCurrentVideo(null)}
+        />
         <Contact />
+        <GalleryView
+          video={currentVideo}
+          clearVideo={() => setCurrentVideo(null)}
+        />
       </main>
     </>
   );

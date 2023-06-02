@@ -1,3 +1,8 @@
+:root {
+  --breakpoint-small: 40em;
+  --breakpoint-medium: 55em;
+}
+
 $breakpoints: (
   "tiny": 26.625em,
   "small": 40em,

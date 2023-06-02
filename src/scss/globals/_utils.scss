@@ -6,6 +6,9 @@ $content-max-width: 50rem;
 .scroll-destination {
   height: var(--header-height);
 }
+.disable-scroll {
+  overflow: hidden;
+}
 
 @mixin fade($duration: 250ms, $delay: 0ms) {
   transition: color $duration ease-out $delay,

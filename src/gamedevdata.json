@@ -1,7 +1,7 @@
 [
   {
-    "id": 1,
-    "label": "Combat & AI",
+    "id": 3,
+    "label": "Worldbuilding w/ Tilemaps",
     "url": "gamedev/clouds.webm"
   },
   {
@@ -10,8 +10,8 @@
     "url": "gamedev/clouds.webm"
   },
   {
-    "id": 3,
-    "label": "Worldbuilding w/ Tilemaps",
+    "id": 1,
+    "label": "Combat & AI",
     "url": "gamedev/clouds.webm"
   },
   {

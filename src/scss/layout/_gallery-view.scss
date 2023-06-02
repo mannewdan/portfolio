@@ -1,0 +1,40 @@
+.gallery-view {
+  pointer-events: none;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  z-index: 100;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .screen-fader {
+    position: absolute;
+    background-color: hsl(0 0% 0% / 50%);
+    height: 100%;
+    width: 100%;
+    pointer-events: all;
+
+    transition: opacity 75ms ease-out;
+    &.hidden {
+      transition: none;
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+  .video-container {
+    pointer-events: all;
+    width: calc(100% - 6rem);
+    max-width: calc(1.5 * (100vh - 4rem - var(--video-label-height)));
+
+    video {
+      width: 100%;
+    }
+    .label {
+      font-size: var(--fs-400);
+    }
+  }
+}
