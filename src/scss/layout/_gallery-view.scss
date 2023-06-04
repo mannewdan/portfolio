@@ -1,3 +1,5 @@
+@use "../globals/breakpoints" as *;
+
 .gallery-view {
   pointer-events: none;
   position: fixed;
@@ -34,6 +36,9 @@
   .video-container {
     pointer-events: all;
     width: calc(100% - 6rem);
+    @include breakpoint(medium) {
+      width: calc(100% - 8rem);
+    }
     max-width: calc(1.5 * (100vh - 4rem - var(--video-label-height)));
 
     animation-name: gallery-container-grow;

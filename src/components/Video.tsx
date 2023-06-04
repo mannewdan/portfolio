@@ -45,6 +45,7 @@ export default function Video({
         autoPlay={false}
         muted={true}
         loop={true}
+        poster={video.poster}
       >
         <source type="video/webm" src={video.url}></source>
       </video>

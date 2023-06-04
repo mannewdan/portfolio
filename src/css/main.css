@@ -1326,7 +1326,7 @@ body:not(.grabbing) .skills .skill-cell:hover span {
   top: 1rem;
   right: 1rem;
   z-index: 1;
-  width: 4rem;
+  width: 3rem;
   box-shadow: 0 0 6px hsla(0, 0%, 0%, 0.25);
   border-radius: 50%;
 }
@@ -1340,12 +1340,17 @@ body:not(.grabbing) .skills .skill-cell:hover span {
   background-color: hsl(var(--c-accent-bright));
 }
 .video-container .arrow {
-  --arrow-size: 5rem;
+  --arrow-size: 3rem;
   cursor: pointer;
   position: absolute;
   top: calc(50% - var(--arrow-size) * 0.5);
   width: var(--arrow-size);
   transition: color 75ms ease-out 0ms, background-color 75ms ease-out 0ms, transform 75ms ease-out 0ms, border-color 75ms ease-out 0ms;
+}
+@media (min-width: 55em) {
+  .video-container .arrow {
+    --arrow-size: 4rem;
+  }
 }
 .video-container .arrow.left {
   left: calc(var(--arrow-size) * -1);
@@ -1430,6 +1435,11 @@ video {
   animation-name: gallery-container-grow;
   animation-duration: 150ms;
   animation-timing-function: ease-out;
+}
+@media (min-width: 55em) {
+  .gallery-view .video-container {
+    width: calc(100% - 8rem);
+  }
 }
 .gallery-view .video-container video {
   width: 100%;

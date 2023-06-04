@@ -2,31 +2,37 @@
   {
     "id": 1,
     "label": "Worldbuilding w/ Tilemaps",
-    "url": "gamedev/clouds.webm"
+    "url": "gamedev/tilemapping.webm",
+    "poster": "gamedev/tilemapping.jpg"
   },
   {
     "id": 2,
-    "label": "Dynamic World Generation",
-    "url": "gamedev/camera.webm"
+    "label": "Volumetric Rendering",
+    "url": "gamedev/clouds.webm",
+    "poster": "gamedev/clouds.jpg"
   },
   {
     "id": 3,
-    "label": "Physics & AI",
-    "url": "gamedev/clouds.webm"
+    "label": "Dynamic World Generation",
+    "url": "gamedev/flyby.webm",
+    "poster": "gamedev/flyby.jpg"
   },
   {
     "id": 4,
-    "label": "Volumetric Rendering",
-    "url": "gamedev/camera.webm"
+    "label": "Action Gameplay & AI",
+    "url": "gamedev/gameplay.webm",
+    "poster": "gamedev/gameplay.jpg"
   },
   {
     "id": 5,
     "label": "Environment Art",
-    "url": "gamedev/clouds.webm"
+    "url": "gamedev/tour.webm",
+    "poster": "gamedev/tour.jpg"
   },
   {
     "id": 6,
     "label": "Animation",
-    "url": "gamedev/camera.webm"
+    "url": "gamedev/plants.webm",
+    "poster": "gamedev/plants.jpg"
   }
 ]
