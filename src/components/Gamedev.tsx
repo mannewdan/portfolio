@@ -101,7 +101,7 @@ export default function Gamedev() {
       <section className="gamedev alt">
         <h2 className="text-h-m section-title">Other Works</h2>
         <p className="description text-b-s c-text-medium padded-container">
-          A look at some other things I've done
+          A look at some of the things I've done using the Unity game engine
         </p>
 
         <div className="padded-container">

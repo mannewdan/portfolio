@@ -25,7 +25,7 @@ export default function Projects() {
   return (
     <section className="projects">
       <div id="projects" className="scroll-destination"></div>
-      <h2 className="text-h-m section-title">Projects</h2>
+      <h2 className="text-h-m section-title">Web Projects</h2>
 
       <div className="padded-container">
         <div className="grid">{projectEls}</div>
