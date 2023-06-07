@@ -41,7 +41,7 @@
     ]
   },
   {
-    "name": "Pathfinding",
+    "name": "Pathfinder",
     "live": "https://mannewdanpathfinding.netlify.app/",
     "repo": "https://github.com/mannewdan/dungeon-sim",
     "img": "projects/pathfinding.jpg",
