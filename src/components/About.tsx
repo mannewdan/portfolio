@@ -18,7 +18,7 @@ export default function About() {
         <div className="links-container">
           <a
             target="_blank"
-            href="https://www.linkedin.com/in/daniel-newman-19aa48267/"
+            href="https://www.linkedin.com/in/daniel-newman-84459718b/"
           >
             <Icon url="logos/linkedin.svg" />
           </a>
