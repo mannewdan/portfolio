@@ -960,6 +960,10 @@ body:not(.grabbing) .skills .skill-cell:hover span {
 .skills .skill-element.hidden {
   display: none;
 }
+.skills .skill-element .icon {
+  width: 100%;
+  aspect-ratio: 1;
+}
 .skills .skill-element .blend {
   transition: background-color 75ms ease-out;
   background-color: hsl(var(--c-accent-dark));
