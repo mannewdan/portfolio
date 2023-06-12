@@ -8,13 +8,16 @@ import useMousePosition from "./useMousePosition";
 export type SkillT = {
   name: string;
   url: string;
+  image: HTMLImageElement;
   previousPosition?: { x: number; y: number } | undefined;
 };
 
 export default function Skills() {
   const [skills, setSkills] = useState(
     data.map((item) => {
-      return { ...item } as SkillT;
+      const newItem = { ...item, image: new Image() } as SkillT;
+      newItem.image.src = item.url;
+      return newItem;
     })
   );
   const [grabbedSkill, setGrabbedSkill] = useState<SkillT | null>(null);
