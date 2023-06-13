@@ -284,7 +284,8 @@ a:hover .blend {
   position: relative;
   z-index: 5;
 }
-.header .background-animation {
+.header .background-animation,
+.header .background-gradient {
   -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% var(--header-height), 0% var(--header-height));
           clip-path: polygon(0% 0%, 100% 0%, 100% var(--header-height), 0% var(--header-height));
 }

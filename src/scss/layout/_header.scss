@@ -24,7 +24,8 @@
     z-index: 5;
   }
 
-  .background-animation {
+  .background-animation,
+  .background-gradient {
     clip-path: polygon(
       0% 0%,
       100% 0%,

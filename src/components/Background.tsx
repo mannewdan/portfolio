@@ -1,4 +1,6 @@
 export default function Background() {
+  return <div className="background-animation"></div>;
+
   return (
     <>
       <div className="background-animation">
