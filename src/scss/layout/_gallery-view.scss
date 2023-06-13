@@ -39,7 +39,10 @@
     @include breakpoint(medium) {
       width: calc(100% - 8rem);
     }
-    max-width: calc(1.5 * (100vh - 4rem - var(--video-label-height)));
+    max-width: min(
+      900px,
+      calc(1.5 * (100vh - 4rem - var(--video-label-height)))
+    );
 
     animation-name: gallery-container-grow;
     animation-duration: 150ms;

@@ -1440,7 +1440,7 @@ video {
 .gallery-view .video-container {
   pointer-events: all;
   width: calc(100% - 6rem);
-  max-width: calc(1.5 * (100vh - 4rem - var(--video-label-height)));
+  max-width: min(900px, 1.5 * (100vh - 4rem - var(--video-label-height)));
   animation-name: gallery-container-grow;
   animation-duration: 150ms;
   animation-timing-function: ease-out;
