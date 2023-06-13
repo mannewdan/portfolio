@@ -16,9 +16,12 @@ export default function Hero() {
         <a href="#projects" className="text-h-s">
           See my work
         </a>
-      </div>
 
-      <Icon url="arrow.svg" />
+        <Icon
+          url="arrow.svg"
+          className={navigator.maxTouchPoints > 0 ? "mobile" : ""}
+        />
+      </div>
     </section>
   );
 }

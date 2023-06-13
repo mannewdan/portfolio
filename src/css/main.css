@@ -516,6 +516,11 @@ a:hover .blend {
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
 }
+.hero .icon.mobile {
+  position: static;
+  margin-top: 1.5rem;
+  width: 2rem;
+}
 
 @keyframes header-arrow-bounce {
   0% {
