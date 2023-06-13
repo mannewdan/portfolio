@@ -74,6 +74,11 @@
     position: absolute;
     width: 3rem;
     bottom: 1.5rem;
+    &.mobile {
+      position: static;
+      margin-top: 1.5rem;
+      width: 2rem;
+    }
     left: 0;
     right: 0;
     margin-inline: auto;
