@@ -101,8 +101,21 @@ export default function Gamedev() {
       <section className="gamedev alt">
         <h2 className="text-h-m section-title">Other Works</h2>
         <p className="description text-b-s c-text-medium padded-container">
-          A look at some of the things I've done using the Unity game engine
+          A look at some of the things I've done using C# and the Unity game
+          engine.
         </p>
+
+        <div className="links-container">
+          <a target="_blank" href="https://mannewdan.tumblr.com/">
+            View Blog
+          </a>
+          <a
+            target="_blank"
+            href="https://github.com/mannewdan/Innkeeper-Scripts"
+          >
+            View Code
+          </a>
+        </div>
 
         <div className="padded-container">
           <div className="grid">{videoEls}</div>
