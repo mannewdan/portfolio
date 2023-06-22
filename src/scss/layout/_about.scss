@@ -83,7 +83,8 @@
     }
   }
   .name {
-    color: hsl(var(--c-accent-dark));
+    // color: hsl(var(--c-accent-dark));
+    color: hsl(var(--c-accent-medium));
   }
   .title {
     color: hsl(var(--c-accent-medium));

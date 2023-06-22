@@ -616,7 +616,7 @@ a:hover .blend {
   background-color: hsl(var(--c-accent-bright));
 }
 .about .name {
-  color: hsl(var(--c-accent-dark));
+  color: hsl(var(--c-accent-medium));
 }
 .about .title {
   color: hsl(var(--c-accent-medium));

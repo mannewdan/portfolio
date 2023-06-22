@@ -12,7 +12,6 @@ export default function Contact() {
           {`Feel free to contact me on social media or shoot me an email at `}
           <strong className="c-text-light">{`mannewdan@outlook.com`}</strong>
         </p>
-        <p className="c-text-light-75">{`I'm looking forward to hearing from you!`}</p>
 
         <a
           target="_blank"

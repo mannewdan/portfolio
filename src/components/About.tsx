@@ -7,10 +7,8 @@ export default function About() {
         {/* Main Text */}
         <div className="text-container">
           <h2 className="text-h-m name">Daniel Newman</h2>
-          <p className="text-h-s title">Frontend Developer</p>
           <p className="text-b-s description">
-            {`I'm a self-taught frontend developer from the Twin Cities area and
-            I'm excited to start my career in web development!`}
+            {`A self-motivated developer from the Twin Cities area creating web and game apps.`}
           </p>
         </div>
 
